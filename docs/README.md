@@ -48,7 +48,7 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
 
 > 部署在 Linux 系统上的软件运维。
 >
-> 配套安装脚本：⌨ [软件运维配置脚本集合](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft)
+> 配套安装脚本：⌨ [软件运维配置脚本集合](https://github.com/dunwu/Linux_All_in_one/tree/master/codes/linux/soft)
 
 - 开发环境
   - [JDK 安装](linux/soft/jdk-install.md)

@@ -48,7 +48,7 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
 
 > 部署在 Linux 系统上的软件运维。
 >
-> 配套安装脚本：⌨ [软件运维配置脚本集合](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft)
+> 配套安装脚本：⌨ [软件运维配置脚本集合](https://github.com/adminlove520/Linux_All_in_one/tree/main/codes/linux/soft)
 
 - 开发环境
   - [JDK 安装](linux/soft/jdk-install.md)
@@ -64,14 +64,14 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
   - [Elastic 运维](linux/soft/elastic)
   - [Kafka 运维](linux/soft/kafka-install.md)
   - [RocketMQ 运维](linux/soft/rocketmq-install.md)
-  - [Zookeeper 运维](https://github.com/dunwu/javatech/blob/master/docs/technology/monitor/zookeeper-ops.md)
+  - [Zookeeper 运维](linux/soft/zookeeper-ops.md)
   - [Nacos 运维](linux/soft/nacos-install.md)
 - 服务器
-  - [Nginx 教程](https://github.com/dunwu/nginx-tutorial) 📚
+  - [Nginx 教程](https://github.com/adminlove520/Linux_All_in_one) 📚
   - [Tomcat 运维](linux/soft/tomcat-install.md)
-- [数据库](https://github.com/dunwu/db-tutorial) 📚
-  - [Mysql 运维](https://github.com/dunwu/db-tutorial/blob/master/docs/sql/mysql/mysql-ops.md)
-  - [Redis 运维](https://github.com/dunwu/db-tutorial/blob/master/docs/nosql/redis/redis-ops.md)
+- [数据库](https://github.com/adminlove520/Linux_All_in_one) 📚
+  - [Mysql 运维](linux/soft/mysql-ops.md)
+  - [Redis 运维](linux/soft/redis-ops.md)
 
 ### Docker
 

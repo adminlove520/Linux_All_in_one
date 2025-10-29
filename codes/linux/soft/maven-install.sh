@@ -72,7 +72,7 @@ source /etc/profile
 # replace mirrors in settings.xml
 echo -e "\n>>>>>>>>> replace ${path}/conf/settings.xml"
 cp ${path}/conf/settings.xml ${path}/conf/settings.xml.bak
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/settings-aliyun.xml -O ${path}/conf/settings.xml
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/settings-aliyun.xml -O ${path}/conf/settings.xml
 
 printf "${GREEN}<<<<<<<< install maven end.${RESET}\n"
 mvn -v

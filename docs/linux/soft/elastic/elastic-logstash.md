@@ -511,7 +511,7 @@ kill -9 ${PID}
 - [Logstash 官方文档](https://www.elastic.co/guide/en/logstash/current/index.html)
 - [logstash-logback-encoder](https://github.com/logstash/logstash-logback-encoder)
 - [ELK Stack权威指南](https://github.com/chenryn/logstash-best-practice-cn)
-- [ELK（Elasticsearch、Logstash、Kibana）安装和配置](https://github.com/judasn/Linux-Tutorial/blob/master/ELK-Install-And-Settings.md)
+- [ELK（Elasticsearch、Logstash、Kibana）安装和配置](https://github.com/judasn/Linux_All_in_one/blob/master/ELK-Install-And-Settings.md)
 
 ## 推荐阅读
 

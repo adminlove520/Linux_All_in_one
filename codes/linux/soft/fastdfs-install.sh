@@ -105,9 +105,9 @@ mkdir -p /etc/fdfs
 cp ${path}/fastdfs/conf/http.conf /etc/fdfs/ #供nginx访问使用
 cp ${path}/fastdfs/conf/mime.types /etc/fdfs/ #供nginx访问使用
 cp ${path}/fastdfs-nginx-module/src/mod_fastdfs.conf /etc/fdfs
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/fastdfs/tracker.conf -O /etc/fdfs/tracker.conf
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/fastdfs/storage.conf -O /etc/fdfs/storage.conf
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/fastdfs/client.conf -O /etc/fdfs/client.conf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/fastdfs/tracker.conf -O /etc/fdfs/tracker.conf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/fastdfs/storage.conf -O /etc/fdfs/storage.conf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/fastdfs/client.conf -O /etc/fdfs/client.conf
 # fdfs 存储路径和服务端口（以默认形式配置）
 fdfs_store_path=/home/fdfs
 fdfs_server_port=7001
@@ -130,8 +130,8 @@ sed -i "s#^tracker_server=.*#tracker_server=${ip}:22122#g" /etc/fdfs/mod_fastdfs
 sed -i "s#^store_path0=.*#store_path0=${fdfs_store_path}#g" /etc/fdfs/mod_fastdfs.conf
 printf "${GREEN} - 修改 nginx.conf 配置${RESET}\n"
 mkdir -p /usr/local/nginx/conf/conf
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/nginx/nginx.conf -O /usr/local/nginx/conf/nginx.conf
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/nginx/conf/fdfs.conf -O /usr/local/nginx/conf/conf/fdfs.conf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/nginx/nginx.conf -O /usr/local/nginx/conf/nginx.conf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/nginx/conf/fdfs.conf -O /usr/local/nginx/conf/conf/fdfs.conf
 
 printf "${GREEN}>>>>>>>>> 启动 fastdfs ${RESET}\n"
 chmod +x /etc/init.d/fdfs_trackerd
@@ -146,7 +146,7 @@ chmod +x /etc/init.d/fdfs_storaged
 #/etc/init.d/fdfs_storaged stop #停止动storage服务
 chkconfig fdfs_storaged on #自启动storage服务
 
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/nginx/nginx.service -O /usr/lib/systemd/system/nginx.service
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/nginx/nginx.service -O /usr/lib/systemd/system/nginx.service
 chmod +x /usr/lib/systemd/system/nginx.service
 #设置nginx.service为系统服务
 systemctl enable nginx.service

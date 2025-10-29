@@ -441,5 +441,5 @@ $ reboot
 
 - http://blog.51cto.com/yuanbin/115761
 - https://www.jianshu.com/p/750be209a6f0
-- https://github.com/judasn/Linux-Tutorial/blob/master/markdown-file/Samba.md
+- https://github.com/judasn/Linux_All_in_one/blob/master/markdown-file/Samba.md
 - https://blog.csdn.net/lan120576664/article/details/50396511

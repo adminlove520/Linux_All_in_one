@@ -117,7 +117,7 @@ sudo yum install mysql-community-server
 
 printInfo ">>>> modify my.cnf"
 cp /etc/my.cnf /etc/my.cnf.bak
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/mysql/my.cnf -O /etc/my.cnf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/mysql/my.cnf -O /etc/my.cnf
 
 printInfo ">>>> create mysql log file"
 mkdir -p /var/log/mysql

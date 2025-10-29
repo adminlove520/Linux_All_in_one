@@ -52,7 +52,7 @@ nvm use 8.9.4
 
 ## 脚本
 
-| [安装脚本](https://github.com/dunwu/linux-tutorial/tree/master/codes/linux/soft) |
+| [安装脚本](https://github.com/dunwu/Linux_All_in_one/tree/master/codes/linux/soft) |
 
 ## 更多内容
 

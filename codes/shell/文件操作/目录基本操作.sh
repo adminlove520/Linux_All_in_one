@@ -6,10 +6,10 @@
 # ------------------------------------------------------------------------------
 
 # 创建目录（整个文件路径中的目录如果不存在，都会一一创建，如果目录已存在，则什么也不做）
-mkdir -p /home/linux-tutorial/temp
+mkdir -p /home/Linux_All_in_one/temp
 
 # 进入目录，如果失败，则退出脚本
-cd /home/linux-tutorial/temp || exit 1
+cd /home/Linux_All_in_one/temp || exit 1
 
 # 获取当前目录路径
 CURRENT_DIR=$(pwd)
@@ -24,10 +24,10 @@ DIR_NAME=$(basename $0)
 echo "当前执行脚本名是：${DIR_NAME}"
 
 # 复制目录（复制 temp 目录所有内容，并命名新文件夹叫 temp2）
-cp -rf /home/linux-tutorial/temp /home/linux-tutorial/temp2
+cp -rf /home/Linux_All_in_one/temp /home/Linux_All_in_one/temp2
 
 # 移动目录（将 temp2 移到 temp 目录下）
-mv /home/linux-tutorial/temp2 /home/linux-tutorial/temp/temp2
+mv /home/Linux_All_in_one/temp2 /home/Linux_All_in_one/temp/temp2
 
 # 删除目录
-rm -rf /home/linux-tutorial
+rm -rf /home/Linux_All_in_one

@@ -80,7 +80,7 @@ cd -
 
 printf "${CYAN}>>>> modify redis config${RESET}\n"
 cp ${path}/redis.conf ${path}/redis.conf.default
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/redis/redis.conf -O ${path}/redis.conf
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/redis/redis.conf -O ${path}/redis.conf
 sed -i "s/^port 6379/port ${port}/g" ${path}/redis.conf
 if [[ -n ${password} ]]; then
 	sed -i "s/^protected-mode no/protected-mode yes/g" ${path}/redis.conf
@@ -93,7 +93,7 @@ firewall-cmd --reload
 
 # setting systemd service
 printf "${CYAN}>>>> set redis as a systemd service${RESET}\n"
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/redis/redis.service -O /usr/lib/systemd/system/redis.service
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/redis/redis.service -O /usr/lib/systemd/system/redis.service
 chmod +x /usr/lib/systemd/system/redis.service
 
 # boot redis

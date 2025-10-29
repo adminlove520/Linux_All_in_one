@@ -17,7 +17,7 @@ cat << EOF
 ###################################################################################
 # Linux_All_in_one 运维脚本工具集下载脚本
 # 下载 https://github.com/adminlove520/Linux_All_in_one 中的所有脚本到当前服务器的
-# /home/scripts/linux-tutorial 目录下
+# /home/scripts/Linux_All_in_one 目录下
 # @system: 适用于 CentOS
 # @author: anonymous
 # See: https://github.com/adminlove520/Linux_All_in_one

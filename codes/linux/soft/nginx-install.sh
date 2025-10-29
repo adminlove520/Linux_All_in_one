@@ -68,7 +68,7 @@ cd -
 
 # setting systemd service
 printf "${CYAN}>>>> set nginx as a systemd service${RESET}\n"
-wget -N https://gitee.com/turnon/linux-tutorial/raw/master/codes/linux/soft/config/nginx/nginx.service -O /usr/lib/systemd/system/nginx.service
+wget -N https://github.com/adminlove520/Linux_All_in_one/raw/main/codes/linux/soft/config/nginx/nginx.service -O /usr/lib/systemd/system/nginx.service
 chmod +x /usr/lib/systemd/system/nginx.service
 
 # boot nginx
