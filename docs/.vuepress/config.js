@@ -7,15 +7,7 @@ module.exports = {
   base: '/Linux_All_in_one/',
   title: 'Linux_All_in_one',
   description: 'Linux 运维、软件运维、Docker 教程、网络安全',
-  head: [
-    ['link', { rel: 'icon', href: `/favicon.ico` }],
-    ['style', {}, `
-      /* 使二级目录居中显示 */
-      .sidebar-nav li ul li {
-        text-align: center;
-      }
-    `]
-  ],
+  head: [['link', { rel: 'icon', href: `/favicon.ico` }]],
   markdown: {
     externalLinks: {
       target: '_blank',

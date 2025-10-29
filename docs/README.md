@@ -1,6 +1,6 @@
 <p align="center">
   <a href="http://endless.horse">
-    <img src=moon.gif alt="spinning-moon" />
+    <img src="./images/moon.gif" alt="spinning-moon" />
   </a>
 </p>
 
@@ -9,17 +9,11 @@
 </h1>
 
 <h3 align="center">
-  📚 **Linux_All_in_one** 是一个 Linux 教程 ✨
+  📚 Linux_All_in_one 是一个 Linux 教程 ✨
 </h3>
 
 ---
 
-
-<!-- > 📚 **Linux_All_in_one** 是一个 Linux 教程。
->
-> 🔁 项目维护 [github](https://github.com/adminlove520/Linux_All_in_one) 
->
-> 📖 [电子书](https://adminlove520.github.io/Linux_All_in_one/) -->
 
 ## 📖 内容
 
