@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>常见日常监控 | Linux_All_in_one</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/Linux_All_in_one/favicon.ico">
+    <meta name="description" content="Linux 运维、软件运维、Docker 教程、网络安全">
+    
+    <link rel="preload" href="/Linux_All_in_one/assets/css/0.styles.407428ab.css" as="style"><link rel="preload" href="/Linux_All_in_one/assets/js/app.4a61619a.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/2.ee3c5eb7.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/1.bc260717.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/71.9ff55cae.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/21.f8578145.js" as="script"><link rel="prefetch" href="/Linux_All_in_one/assets/js/100.5e0212b4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/101.280ba6c4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/102.fcbe69ef.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/103.59b3bf86.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/104.628bb6be.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/105.f6a0a62b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/106.53648c35.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/107.093c4fab.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/108.f8895b2f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/109.878b5e6d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/110.e7dbd5ce.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/12.4bdd7f50.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/13.4850c8c8.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/14.66e24ed5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/15.41d57e79.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/16.96600c16.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/17.1cd68a21.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/18.f54ebd77.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/19.36d25975.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/20.0120ca8c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/22.9efa850b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/23.d7f5441c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/24.1cabd94c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/25.2cb5712a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/26.440ab754.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/27.94e60af2.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/28.f1611369.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/29.730dead3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/3.accc0318.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/30.f69c3378.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/31.be2478fc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/32.9465ce70.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/33.f4c85e8a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/34.c3a0ece1.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/35.a75dd538.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/36.da0b8594.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/37.c49eb234.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/38.16f7d0e5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/39.ba6e47f0.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/4.9736648b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/40.664ddb58.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/41.4189f6ca.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/42.6472b832.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/43.c8d06688.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/44.e39a047e.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/45.39945860.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/46.ccbd9cdc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/47.9bed3a75.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/48.05ecd397.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/49.4f2f2874.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/5.9a4eb5c9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/50.d01632db.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/51.ad40e5f5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/52.bfacfa08.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/53.9398692c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/54.b34cb199.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/55.6735c148.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/56.575312d7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/57.d54f0ac7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/58.f3cc4cf5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/59.881dba8f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/6.a3475002.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/60.859faf8a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/61.4efca474.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/62.578a9742.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/63.95e6ff4f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/64.054ab297.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/65.5be33d9b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/66.2312529e.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/67.81dd084d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/68.a11966f3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/69.ffbf7d57.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/7.b4d90be9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/70.51883659.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/72.d54e184f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/73.5062fbf7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/74.0721cccd.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/75.42dd3581.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/76.d590fa57.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/77.0e5953f3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/78.4bb79720.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/79.48030292.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/80.d036bc22.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/81.d6524746.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/82.93460687.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/83.7c6f2e4a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/84.83b1808d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/85.14c12ffc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/86.893b5c41.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/87.7d10879f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/88.ef12068f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/89.cc81e4e4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/90.130454fc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/91.838da398.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/92.22813cd9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/93.2000427b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/94.062717c8.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/95.9cc81974.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/96.0457546b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/97.71d6bbd5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/98.e6299973.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/99.b198a395.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~docsearch.00f0a528.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~flowchart.d07b8b19.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~notification.877bb3fc.js">
+    <link rel="stylesheet" href="/Linux_All_in_one/assets/css/0.styles.407428ab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Linux_All_in_one/" class="home-link router-link-active"><img src="/Linux_All_in_one/images/dunwu-logo-100.png" alt="Linux_All_in_one" class="logo"> <span class="site-name can-hide">Linux_All_in_one</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Linux_All_in_one/linux/cli/" class="nav-link">
+  💻 Linux 命令
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/ops/" class="nav-link router-link-active">
+  ⚙️ Linux 运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/soft/" class="nav-link">
+  📦 Linux 软件运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/docker/" class="nav-link">
+  🐳 Docker 教程
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/Cybersecurity/" class="nav-link">
+  🔒 Linux与网络安全
+</a></div> <a href="https://github.com/adminlove520/Linux_All_in_one" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Linux_All_in_one/linux/cli/" class="nav-link">
+  💻 Linux 命令
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/ops/" class="nav-link router-link-active">
+  ⚙️ Linux 运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/soft/" class="nav-link">
+  📦 Linux 软件运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/docker/" class="nav-link">
+  🐳 Docker 教程
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/Cybersecurity/" class="nav-link">
+  🔒 Linux与网络安全
+</a></div> <a href="https://github.com/adminlove520/Linux_All_in_one" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>常见日常监控</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux_All_in_one/linux/ops/monitor.html#系统信息" class="sidebar-link">系统信息</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#综合监控" class="sidebar-link">综合监控</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#系统负载" class="sidebar-link">系统负载</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#cpu-监控" class="sidebar-link">CPU 监控</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#内存监控" class="sidebar-link">内存监控</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#硬盘监控" class="sidebar-link">硬盘监控</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#网络监控" class="sidebar-link">网络监控</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/ops/monitor.html#端口使用情况-也可以用来查看端口占用" class="sidebar-link">端口使用情况（也可以用来查看端口占用）</a></li></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#查看-linux-内核版本" class="sidebar-link">查看 Linux 内核版本</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#dmesg-打印内核信息" class="sidebar-link">dmesg 打印内核信息</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#查看系统日志" class="sidebar-link">查看系统日志</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#服务器故障排查顺序" class="sidebar-link">服务器故障排查顺序</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/ops/monitor.html#参考资料" class="sidebar-link">参考资料</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="常见日常监控"><a href="#常见日常监控" class="header-anchor">#</a> 常见日常监控</h1> <h2 id="系统信息"><a href="#系统信息" class="header-anchor">#</a> 系统信息</h2> <ul><li>查看 CentOS 版本号：<code>cat /etc/redhat-release</code></li></ul> <hr> <h2 id="综合监控"><a href="#综合监控" class="header-anchor">#</a> 综合监控</h2> <ul><li><a href="/Linux_All_in_one/linux/ops/Nmon.html">nmon</a></li></ul> <hr> <h2 id="系统负载"><a href="#系统负载" class="header-anchor">#</a> 系统负载</h2> <h4 id="命令-w-判断整体瓶颈"><a href="#命令-w-判断整体瓶颈" class="header-anchor">#</a> 命令：w（判断整体瓶颈）</h4> <div class="language- extra-class"><pre class="language-text"><code> 12:04:52 up 16 days, 12:54,  1 user,  load average: 0.06, 0.13, 0.12
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+root     pts/0    116.21.24.85     11:57    4.00s 16:18   0.01s w
+</code></pre></div><ul><li>第一行：
+<ul><li><code>12:04:52</code> 表示当前系统时间</li> <li><code>up 16 days</code> 表示系统运行时间</li> <li><code>1 user</code> 表示登录用户数</li> <li><code>load average</code> 表示平均负载，0.06 表示一分钟内系统的平均负载值，0.13 表示五分钟内系统的平均负载值，0.12 表示十五分钟内系统的平均负载值。一般这个字不要超过服务器的 CPU 线程数（process）就没有关系。
+<ul><li>查看 CPU 总的线程数：<code>grep 'processor' /proc/cpuinfo | sort -u | wc -l</code></li></ul></li></ul></li> <li>第二行：
+<ul><li>开始表示各个登录用户的情况，当前登录者是 root，登录者 IP 116.21.24.85</li></ul></li> <li>还有一个简化版本的命令：<code>uptime</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>10:56:16 up 26 days, 20:05,  1 user,  load average: 0.00, 0.01, 0.05
+</code></pre></div><h4 id="命令-vmstat-判断-ram-和-i-0-瓶颈"><a href="#命令-vmstat-判断-ram-和-i-0-瓶颈" class="header-anchor">#</a> 命令：vmstat（判断 RAM 和 I/0 瓶颈）</h4> <ul><li>命令：<code>vmstat 5 10</code>，每 5 秒采样一次，共 10 次。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 2  0      0  72648      0 674564    0    0     0     7    0   26  1  1 99  0  0
+ 0  0      0  72648      0 674596    0    0     0     0  442  557  1  0 99  0  0
+ 0  0      0  72648      0 674596    0    0     0    12  438  574  0  1 99  0  0
+ 0  0      0  72648      0 674596    0    0     0     0  430  540  0  0 100  0  0
+ 0  0      0  72648      0 674596    0    0     0     0  448  567  0  1 99  0  0
+ 0  0      0  72648      0 674596    0    0     0     0  459  574  1  0 99  0  0
+ 0  0      0  72648      0 674596    0    0     0     0  425  543  0  1 99  0  0
+ 0  0      0  72276      0 674600    0    0     0     0  480  643  2  3 95  0  0
+</code></pre></div><ul><li>第二行：
+<ul><li><code>r</code> 表示运行和等待CPU时间片的进程数，该数字如果长期大于服务器CPU的进程数，则说明CPU不够用了。</li> <li><code>b</code> 表示等待资源的进程数，比如等I/O，内存等。该数字如果长时间大于 1，则需要关注一下。</li> <li><code>si</code> 表示由交换区写入到内存的数据量</li> <li><code>so</code> 表示由内存写入到交换区的数据量</li> <li><strong>如果 si 和 so 的数字比较高，并且不断变化时，说明内存不够了。而且不断变化也表示对系统性能影响很大。</strong></li> <li><code>bi</code> 表示从块设备读取数据的量（读磁盘）</li> <li><code>bo</code> 表示从块设备写入数据的量（写磁盘）</li> <li><strong>如果bi和bo两个数字比较高，则说明，磁盘IO压力大。</strong></li> <li><code>in</code> 每秒 CPU 的中断次数，包括时间中断</li> <li><code>cs</code> 每秒上下文切换次数，例如我们调用系统函数，就要进行上下文切换，线程的切换，也要进程上下文切换，这个值要越小越好，太大了，要考虑调低线程或者进程的数目</li> <li><code>wa</code> 表示I/O等待所占用CPU的时间比</li></ul></li></ul> <h4 id="命令-sar-综合"><a href="#命令-sar-综合" class="header-anchor">#</a> 命令：sar（综合）</h4> <ul><li>sar(system activity reporter 系统活动情况报告)</li> <li>sar 是目前 linux 上最为全面的系统性能分析工具之一，可以从多方面对系统的活动情况进行报告。包括（文件的读写、系统调用、磁盘I/O、cpu效率、内存使用、进程活动以及IPC有关的活动）</li> <li>如果没安装，运行：<code>yum install -y sysstat</code></li></ul> <h5 id="sar-之-cpu-使用情况-判断-cpu-瓶颈"><a href="#sar-之-cpu-使用情况-判断-cpu-瓶颈" class="header-anchor">#</a> sar 之 CPU 使用情况（判断 CPU 瓶颈）</h5> <ul><li>命令：<code>sar -u 5 10</code>，每 5 秒采样一次，共 10 次</li></ul> <div class="language- extra-class"><pre class="language-text"><code>01:57:29 PM     CPU     %user     %nice   %system   %iowait    %steal     %idle
+01:57:34 PM     all      1.81      0.00      0.40      0.00      0.00     97.78
+01:57:39 PM     all      0.20      0.00      0.40      0.00      0.00     99.39
+01:57:44 PM     all      0.40      0.00      0.60      0.00      0.00     98.99
+01:57:49 PM     all      0.20      0.00      0.40      0.00      0.00     99.39
+01:57:54 PM     all      0.80      0.00      1.41      0.00      0.00     97.79
+01:57:59 PM     all      0.40      0.00      0.60      0.00      0.00     98.99
+01:58:04 PM     all      0.20      0.00      0.40      0.00      0.00     99.39
+01:58:09 PM     all      0.20      0.00      0.40      0.00      0.00     99.39
+01:58:14 PM     all      0.40      0.00      0.61      0.00      0.00     98.99
+01:58:19 PM     all      0.20      0.00      0.61      0.00      0.00     99.19
+Average:        all      0.48      0.00      0.59      0.00      0.00     98.93
+</code></pre></div><ul><li>列说明：
+<ul><li><code>CPU：all</code> 表示统计信息为所有 CPU的平均值。</li> <li><code>%user</code>：显示在用户级别(application)运行使用 CPU 总时间的百分比。</li> <li><code>%nice</code>：显示在用户级别，用于nice操作，所占用 CPU总时间的百分比。</li> <li><code>%system</code>：在核心级别(kernel)运行所使用 CPU总时间的百分比。</li> <li><code>%iowait</code>：显示用于等待I/O操作占用 CPU总时间的百分比。</li> <li><code>%steal</code>：管理程序(hypervisor)为另一个虚拟进程提供服务而等待虚拟 CPU 的百分比。</li> <li><code>%idle</code>：显示 CPU空闲时间占用 CPU总时间的百分比。</li></ul></li> <li><strong>总结</strong>：
+<ul><li>1.若 <code>%iowait</code> 的值过高，表示硬盘存在I/O瓶颈</li> <li>2.若 <code>%idle</code> 的值高但系统响应慢时，有可能是 CPU 等待分配内存，此时应加大内存容量，可以使用内存监控命令分析内存。</li> <li>3.若 <code>%idle</code> 的值持续低于1，则系统的 CPU 处理能力相对较低，表明系统中最需要解决的资源是 CPU。</li></ul></li></ul> <h5 id="sar-之-ram-使用情况-判断内存瓶颈"><a href="#sar-之-ram-使用情况-判断内存瓶颈" class="header-anchor">#</a> sar 之 RAM 使用情况（判断内存瓶颈）</h5> <ul><li>命令：<code>sar -B 5 10</code>，每 5 秒采样一次，共 10 次</li></ul> <div class="language- extra-class"><pre class="language-text"><code>02:32:15 PM  pgpgin/s pgpgout/s   fault/s  majflt/s  pgfree/s pgscank/s pgscand/s pgsteal/s    %vmeff
+02:32:20 PM      0.00      0.81    258.47      0.00     27.22      0.00      0.00      0.00      0.00
+02:32:25 PM      0.00      0.00    611.54      0.00    300.20      0.00      0.00      0.00      0.00
+02:32:30 PM      0.00     26.61     10.08      0.00     11.90      0.00      0.00      0.00      0.00
+02:32:35 PM      0.00      1.62      3.64      0.00      3.84      0.00      0.00      0.00      0.00
+02:32:40 PM      0.00      0.00      3.42      0.00      4.43      0.00      0.00      0.00      0.00
+02:32:45 PM      0.00      0.00      3.43      0.00      3.83      0.00      0.00      0.00      0.00
+02:32:50 PM      0.00      1.62      3.84      0.00      5.86      0.00      0.00      0.00      0.00
+02:32:55 PM      0.00      0.00      3.41      0.00      3.82      0.00      0.00      0.00      0.00
+02:33:00 PM      0.00      2.42    763.84      0.00    208.69      0.00      0.00      0.00      0.00
+02:33:05 PM      0.00     13.74   2409.70      0.00    929.70      0.00      0.00      0.00      0.00
+Average:         0.00      4.68    406.50      0.00    149.69      0.00      0.00      0.00      0.00
+</code></pre></div><ul><li><code>pgpgin/s</code>：表示每秒从磁盘或SWAP置换到内存的字节数(KB)</li> <li><code>pgpgout/s</code>：表示每秒从内存置换到磁盘或SWAP的字节数(KB)</li> <li><code>fault/s</code>：每秒钟系统产生的缺页数,即主缺页与次缺页之和(major + minor)</li> <li><code>majflt/s</code>：每秒钟产生的主缺页数</li> <li><code>pgfree/s</code>：每秒被放入空闲队列中的页个数</li> <li><code>pgscank/s</code>：每秒被kswapd扫描的页个数</li> <li><code>pgscand/s</code>：每秒直接被扫描的页个数</li> <li><code>pgsteal/s</code>：每秒钟从cache中被清除来满足内存需要的页个数</li> <li><code>%vmeff</code>：每秒清除的页(pgsteal)占总扫描页(pgscank+pgscand)的百分比</li></ul> <h5 id="sar-之-i-o-使用情况-判断-i-o-瓶颈"><a href="#sar-之-i-o-使用情况-判断-i-o-瓶颈" class="header-anchor">#</a> sar 之 I/O 使用情况（判断 I/O 瓶颈）</h5> <ul><li>命令：<code>sar -b 5 10</code>，每 5 秒采样一次，共 10 次</li></ul> <div class="language- extra-class"><pre class="language-text"><code>02:34:13 PM       tps      rtps      wtps   bread/s   bwrtn/s
+02:34:18 PM      3.03      0.00      3.03      0.00     59.80
+02:34:23 PM      0.00      0.00      0.00      0.00      0.00
+02:34:28 PM      0.00      0.00      0.00      0.00      0.00
+02:34:33 PM      0.00      0.00      0.00      0.00      0.00
+02:34:38 PM      1.61      0.00      1.61      0.00     24.80
+02:34:43 PM      0.00      0.00      0.00      0.00      0.00
+02:34:48 PM      0.40      0.00      0.40      0.00      4.86
+02:34:53 PM      0.00      0.00      0.00      0.00      0.00
+02:34:58 PM      0.00      0.00      0.00      0.00      0.00
+02:35:03 PM      0.00      0.00      0.00      0.00      0.00
+Average:         0.50      0.00      0.50      0.00      8.94
+</code></pre></div><ul><li><code>tps</code>：每秒钟物理设备的 I/O 传输总量</li> <li><code>rtps</code>：每秒钟从物理设备读入的数据总量</li> <li><code>wtps</code>：每秒钟向物理设备写入的数据总量</li> <li><code>bread/s</code>：每秒钟从物理设备读入的数据量，单位为块/s</li> <li><code>bwrtn/s</code>：每秒钟向物理设备写入的数据量，单位为块/s</li></ul> <h5 id="sar-之-dev-网卡-流量查看-判断网络瓶颈"><a href="#sar-之-dev-网卡-流量查看-判断网络瓶颈" class="header-anchor">#</a> sar 之 DEV（网卡）流量查看（判断网络瓶颈）</h5> <ul><li>命令：<code>sar -n DEV</code>，查看网卡历史流量（因为是按时间显示每棵的流量，所以有很多）</li> <li>如果要动态显示当前的网卡流量：<code>sar -n DEV 1</code></li> <li>采样收集网卡流量：<code>sar -n DEV 5 10</code>，每 5 秒采样一次，共 10 次</li> <li>如果要查看其他日期下的记录，可以到这个目录下：<code>cd /var/log/sa</code> 查看下记录的文件，然后选择一个文件，比如：<code>sar -n DEV -f /var/log/sa/sa01</code>）</li></ul> <div class="language- extra-class"><pre class="language-text"><code>01:46:24 PM     IFACE   rxpck/s   txpck/s    rxkB/s    txkB/s   rxcmp/s   txcmp/s  rxmcst/s
+01:46:25 PM        lo      3.00      3.00      0.18      0.18      0.00      0.00      0.00
+01:46:25 PM      eth0      4.00      4.00      0.55      0.56      0.00      0.00      0.00
+</code></pre></div><ul><li><p><code>01:46:25 PM</code> 表示时间</p></li> <li><p><code>IFACE</code> 表示网卡名称</p></li> <li><p><code>rxpck/s</code> 每秒钟接收到的 <strong>包数目</strong>，一般如果这个数字大于 4000 一般是被攻击了。</p></li> <li><p><code>txpck/s</code> 每秒钟发送出去的 <strong>包数目</strong></p></li> <li><p><code>rxkB/s</code> 每秒钟接收到的数据量(单位kb)，一般如果这个数字大于 5000 一般是被攻击了。</p></li> <li><p><code>txkB/s</code> 每秒钟发送出去的数据量(单位kb)</p></li> <li><p><code>rxcmp/s</code>：每秒钟接收到的压缩包数目</p></li> <li><p><code>txcmp/s</code>：每秒钟发送出去的压缩包数目</p></li> <li><p><code>txmcst/s</code>：每秒钟接收到的多播包的包数目</p></li> <li><p>查看 TCP 相关的一些数据（每隔 1 秒采样一次，一共 5 次）：<code>sar -n TCP,ETCP 1 5</code></p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Linux 3.10.0-693.2.2.el7.x86_64 (youmeek) 	07/17/2018 	_x86_64_	(2 CPU)
+
+12:05:47 PM  active/s passive/s    iseg/s    oseg/s
+12:05:48 PM      0.00      0.00      1.00      0.00
+
+12:05:47 PM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s
+12:05:48 PM      0.00      0.00      0.00      0.00      0.00
+
+12:05:48 PM  active/s passive/s    iseg/s    oseg/s
+12:05:49 PM      0.00      0.00      1.00      1.00
+
+12:05:48 PM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s
+12:05:49 PM      0.00      0.00      0.00      0.00      0.00
+
+12:05:49 PM  active/s passive/s    iseg/s    oseg/s
+12:05:50 PM      0.00      0.00      1.00      1.00
+
+12:05:49 PM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s
+12:05:50 PM      0.00      0.00      0.00      0.00      0.00
+
+12:05:50 PM  active/s passive/s    iseg/s    oseg/s
+12:05:51 PM      0.00      0.00      3.00      3.00
+
+12:05:50 PM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s
+12:05:51 PM      0.00      0.00      0.00      0.00      0.00
+
+12:05:51 PM  active/s passive/s    iseg/s    oseg/s
+12:05:52 PM      0.00      0.00      1.00      1.00
+
+12:05:51 PM  atmptf/s  estres/s retrans/s isegerr/s   orsts/s
+12:05:52 PM      0.00      0.00      0.00      0.00      0.00
+
+Average:     active/s passive/s    iseg/s    oseg/s
+Average:         0.00      0.00      1.40      1.20
+
+Average:     atmptf/s  estres/s retrans/s isegerr/s   orsts/s
+Average:         0.00      0.00      0.00      0.00      0.00
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>- active/s：每秒钟本地主动开启的 tcp 连接，也就是本地程序使用 connect() 系统调用
+- passive/s：每秒钟从源端发起的 tcp 连接，也就是本地程序使用 accept() 所接受的连接
+- retrans/s: 每秒钟的 tcp 重传次数
+
+atctive 和 passive 的数目通常可以用来衡量服务器的负载：接受连接的个数（passive），下游连接的个数（active）。可以简单认为 active 为出主机的连接，passive 为入主机的连接；但这个不是很严格的说法，比如 loalhost 和 localhost 之间的连接。
+
+来自：https://zhuanlan.zhihu.com/p/39893236
+</code></pre></div><hr> <h2 id="cpu-监控"><a href="#cpu-监控" class="header-anchor">#</a> CPU 监控</h2> <h4 id="cpu-的基本信息查看"><a href="#cpu-的基本信息查看" class="header-anchor">#</a> CPU 的基本信息查看</h4> <ul><li>Demo CPU 型号：<a href="http://ark.intel.com/products/75789/Intel-Xeon-Processor-E5-2620-v2-15M-Cache-2_10-GHz" target="_blank" rel="noopener noreferrer">Intel® Xeon® Processor E5-2620 v2(15M Cache, 2.10 GHz)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>该 CPU 显示的数据中有一项这个要注意：<code>Intel® Hyper-Threading Technology</code> 是 <code>Yes</code>。表示该 CPU 支持超线程</li> <li><code>cat /proc/cpuinfo</code>，查看 CPU 总体信息</li> <li><code>grep 'physical id' /proc/cpuinfo | sort -u | wc -l</code>，查看物理 CPU 个数
+<ul><li>结果：2</li> <li>物理 CPU：物理 CPU 也就是机器外面就能看到的一个个 CPU，每个物理 CPU 还带有单独的风扇</li></ul></li> <li><code>grep 'core id' /proc/cpuinfo | sort -u | wc -l</code>，查看每个物理 CPU 的核心数量
+<ul><li>结果：6，因为每个物理 CPU 是 6，所有 2 个物理 CPU 的总核心数量应该是：12</li> <li>核心数：一个核心就是一个物理线程，英特尔有个超线程技术可以把一个物理线程模拟出两个线程来用，充分发挥 CPU 性能，意思是一个核心可以有多个线程。</li></ul></li> <li><code>grep 'processor' /proc/cpuinfo | sort -u | wc -l</code>，查看 CPU 总的线程数，一般也叫做：逻辑 CPU 数量
+<ul><li>结果：24，正常情况下：CPU 的总核心数量 == CPU 线程数，但是如果该 CPU 支持超线程，那结果是：CPU 的总核心数量 X 2 == CPU 线程数</li> <li>线程数：线程数是一种逻辑的概念，简单地说，就是模拟出的 CPU 核心数。比如，可以通过一个 CPU 核心数模拟出 2 线程的 CPU，也就是说，这个单核心的 CPU 被模拟成了一个类似双核心 CPU 的功能。</li></ul></li></ul> <h4 id="cpu-监控-2"><a href="#cpu-监控-2" class="header-anchor">#</a> CPU 监控</h4> <ul><li>Linux 的 CPU 简单监控一般简单</li> <li>常用命令就是 <code>top</code> <ul><li>命令：<code>top -bn1</code>，可以完全显示所有进程出来，但是不能实时展示数据，只能暂时命令当时的数据。</li></ul></li> <li><code>top</code> 可以动态显示进程所占的系统资源，每隔 3 秒变一次，占用系统资源最高的进程放最前面。</li> <li>在 <code>top</code> 命令状态下还可以按数字键 <kbd>1<kbd> 显示各个 CPU 线程使用状态</kbd></kbd></li> <li>在 <code>top</code> 命令状态下按 <kbd>shfit</kbd> + <kbd>m</kbd> 可以按照 <strong>内存使用</strong> 大小排序</li> <li>在 <code>top</code> 命令状态下按 <kbd>shfit</kbd> + <kbd>p</kbd> 可以按照 <strong>CPU 使用</strong> 大小排序</li> <li>展示数据上，%CPU 表示进程占用的 CPU 百分比，%MEM 表示进程占用的内存百分比</li> <li>mac 下不一样：要先输入 o，然后输入 cpu 则按 cpu 使用量排序，输入 rsize 则按内存使用量排序。</li></ul> <h4 id="cpu-其他工具"><a href="#cpu-其他工具" class="header-anchor">#</a> CPU 其他工具</h4> <ul><li>htop 综合工具：<code>yum install -y htop</code> <ul><li>这几篇文章讲得很好，我没必要再贴过来了，大家自己看：</li> <li><a href="http://blog.51cto.com/215687833/1788493" target="_blank" rel="noopener noreferrer">htop 命令完胜 top 命令<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://blog.csdn.net/freeking101/article/details/79173903" target="_blank" rel="noopener noreferrer">htop 命令详解<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li>mpstat 实时监控 CPU 状态：<code>yum install -y sysstat</code> <ul><li>可以具体到某个核心，比如我有 2 核的 CPU，因为 CPU 核心下标是从 0 开始，所以我要查看 0 的状况（间隔 3 秒获取一次指标，一共获取 5 次）：<code>mpstat -P 0 3 5</code></li> <li>打印总 CPU 和各个核心指标：<code>mpstat -P ALL 1</code></li> <li>获取所有核心的平均值：<code>mpstat 3 5</code></li></ul></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Linux 3.10.0-693.2.2.el7.x86_64 (iZwz998aag1ggy168n3wg2Z) 	06/23/2018 	_x86_64_	(2 CPU)
+
+11:44:52 AM  CPU    %usr   %nice    %sys %iowait    %irq   %soft  %steal  %guest  %gnice   %idle
+11:44:53 AM    0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+11:44:54 AM    0    1.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00   99.00
+11:44:55 AM    0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+11:44:56 AM    0    0.00    0.00    1.00    0.00    0.00    0.00    0.00    0.00    0.00   99.00
+11:44:57 AM    0    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00    0.00  100.00
+Average:       0    0.20    0.00    0.20    0.00    0.00    0.00    0.00    0.00    0.00   99.60
+</code></pre></div><ul><li>%usr 用户进程消耗 CPU 情况</li> <li>%sys 系统进程消耗 CPU 情况</li> <li>%iowait  表示 CPU 等待 IO 时间占整个 CPU 周期的百分比</li> <li>%idle  显示 CPU 空闲时间占用 CPU 总时间的百分比</li></ul> <h4 id="类似-top-的-pidstat"><a href="#类似-top-的-pidstat" class="header-anchor">#</a> 类似 top 的 pidstat</h4> <ul><li>安装：<code>yum install -y sysstat</code></li> <li>每隔 2 秒采样一次，一共 5 次：<code>pidstat 2 5</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Linux 3.10.0-693.el7.x86_64 (youmeek) 	07/17/2018 	_x86_64_	(8 CPU)
+
+11:52:58 AM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+11:53:00 AM     0     16813    0.50    0.99    0.00    1.49     1  pidstat
+11:53:00 AM     0     24757   50.99   12.87    0.00   63.86     0  java
+11:53:00 AM     0     24799   60.40    3.47    0.00   63.86     5  java
+11:53:00 AM     0     24841   99.50    7.43    0.00  100.00     0  java
+
+11:53:00 AM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+11:53:02 AM     0     24757   56.50    0.50    0.00   57.00     0  java
+11:53:02 AM     0     24799  100.00    6.50    0.00  100.00     5  java
+11:53:02 AM     0     24841   58.00    2.50    0.00   60.50     0  java
+
+11:53:02 AM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+11:53:04 AM     0     16813    0.00    1.00    0.00    1.00     2  pidstat
+11:53:04 AM     0     24757   62.00    5.50    0.00   67.50     0  java
+11:53:04 AM     0     24799   54.00   14.00    0.00   68.00     5  java
+11:53:04 AM     0     24841   39.50    9.00    0.00   48.50     0  java
+
+11:53:04 AM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+11:53:06 AM     0     16813    0.50    0.50    0.00    1.00     2  pidstat
+11:53:06 AM     0     24757   80.00   13.50    0.00   93.50     0  java
+11:53:06 AM     0     24799   56.50    0.50    0.00   57.00     5  java
+11:53:06 AM     0     24841    1.00    0.50    0.00    1.50     0  java
+
+11:53:06 AM   UID       PID    %usr %system  %guest    %CPU   CPU  Command
+11:53:08 AM     0     16813    0.00    0.50    0.00    0.50     2  pidstat
+11:53:08 AM     0     24757   58.50    1.00    0.00   59.50     0  java
+11:53:08 AM     0     24799   60.00    1.50    0.00   61.50     5  java
+11:53:08 AM     0     24841    1.00    0.50    0.00    1.50     0  java
+
+Average:      UID       PID    %usr %system  %guest    %CPU   CPU  Command
+Average:        0     16813    0.20    0.60    0.00    0.80     -  pidstat
+Average:        0     24757   61.58    6.69    0.00   68.26     -  java
+Average:        0     24799   66.47    5.19    0.00   71.66     -  java
+Average:        0     24841   39.92    3.99    0.00   43.91     -  java
+</code></pre></div><hr> <h2 id="内存监控"><a href="#内存监控" class="header-anchor">#</a> 内存监控</h2> <ul><li>Linux 的内存本质是虚拟内存，这样说是因为它的内存是：物理内存 + 交换分区。有一个内存模块来管理应用的内存使用。</li> <li>如果所以你内存大，可以考虑把 swap 分区改得小点或者直接关掉。</li> <li>但是，如果是用的云主机，一般是没交换分区的，<code>free -g</code> 中的 Swap 都是 0。</li> <li>查看内存使用命令：
+<ul><li>以 M 为容量单位展示数据：<code>free -m</code></li> <li>以 G 为容量单位展示数据：<code>free -g</code></li> <li>CentOS 6 和 CentOS 7 展示出来的数据有差别，CentOS 7 比较容易看，比如下面的数据格式是 CentOS 7 的 <code>free -g</code>：</li></ul></li></ul> <div class="language- extra-class"><pre class="language-text"><code>              total        used        free      shared  buff/cache   available
+Mem:             11           0          10           0           0          10
+Swap:             5           0           5
+
+</code></pre></div><ul><li>在以上结果中，其中可以用的内存是看 <code>available</code> 列。</li> <li>对于 CentOS 6 的系统可以使用下面命令：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>[root@bogon ~]# free -mlt
+             total       used       free     shared    buffers     cached
+Mem:         16080      15919        160          0        278      11934
+Low:         16080      15919        160
+High:            0          0          0
+-/+ buffers/cache:       3706      12373
+Swap:            0          0          0
+Total:       16080      15919        160
+</code></pre></div><ul><li>以上的结果重点关注是：<code>-/+ buffers/cache</code>，这一行代表实际使用情况。</li></ul> <h5 id="pidstat-采样内存使用情况"><a href="#pidstat-采样内存使用情况" class="header-anchor">#</a> pidstat 采样内存使用情况</h5> <ul><li>安装：<code>yum install -y sysstat</code></li> <li>每隔 2 秒采样一次，一共 3 次：<code>pidstat -r 2 3</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Linux 3.10.0-693.el7.x86_64 (youmeek) 	07/17/2018 	_x86_64_	(8 CPU)
+
+11:56:34 AM   UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+11:56:36 AM     0     23960    168.81      0.00  108312   1124   0.01  pidstat
+11:56:36 AM     0     24757      8.42      0.00 9360696 3862788  23.75  java
+11:56:36 AM     0     24799      8.91      0.00 10424088 4988468  30.67  java
+11:56:36 AM     0     24841     11.39      0.00 10423576 4968428  30.54  java
+
+11:56:36 AM   UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+11:56:38 AM     0     23960    169.50      0.00  108312   1200   0.01  pidstat
+11:56:38 AM     0     24757      6.00      0.00 9360696 3862788  23.75  java
+11:56:38 AM     0     24799      5.50      0.00 10424088 4988468  30.67  java
+11:56:38 AM     0     24841      7.00      0.00 10423576 4968428  30.54  java
+
+11:56:38 AM   UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+11:56:40 AM     0     23960    160.00      0.00  108312   1200   0.01  pidstat
+11:56:40 AM     0     24757      6.50      0.00 9360696 3862788  23.75  java
+11:56:40 AM     0     24799      6.00      0.00 10424088 4988468  30.67  java
+11:56:40 AM     0     24841      8.00      0.00 10423576 4968428  30.54  java
+
+Average:      UID       PID  minflt/s  majflt/s     VSZ    RSS   %MEM  Command
+Average:        0     23960    166.11      0.00  108312   1175   0.01  pidstat
+Average:        0     24757      6.98      0.00 9360696 3862788  23.75  java
+Average:        0     24799      6.81      0.00 10424088 4988468  30.67  java
+Average:        0     24841      8.80      0.00 10423576 4968428  30.54  java
+</code></pre></div><hr> <h2 id="硬盘监控"><a href="#硬盘监控" class="header-anchor">#</a> 硬盘监控</h2> <h4 id="硬盘容量相关查看"><a href="#硬盘容量相关查看" class="header-anchor">#</a> 硬盘容量相关查看</h4> <ul><li><code>df -h</code>：自动以合适的磁盘容量单位查看磁盘大小和使用空间</li> <li><code>df -m</code>：以磁盘容量单位 M 为数值结果查看磁盘使用情况</li> <li><code>du -sh /opt/tomcat6</code>：查看tomcat6这个文件夹大小 (h的意思human-readable用人类可读性较好方式显示，系统会自动调节单位，显示合适大小的单位)</li> <li><code>du /opt --max-depth=1 -h</code>：查看指定录入下包括子目录的各个文件大小情况</li></ul> <h4 id="命令-iostat-判断-i-0-瓶颈"><a href="#命令-iostat-判断-i-0-瓶颈" class="header-anchor">#</a> 命令：iostat（判断 I/0 瓶颈）</h4> <ul><li>命令：<code>iostat -x -k 3 3</code>，每 3 秒采样一次，共 3 次。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.55    0.00    0.52    0.00    0.00   98.93
+
+Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+vda               0.00     0.04    0.02    0.62     0.44     6.49    21.65     0.00    1.42    1.17    1.42   0.25   0.02
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           0.34    0.00    0.00    0.00    0.00   99.66
+
+Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+vda               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0.00    0.00    0.00    0.00   0.00   0.00
+
+avg-cpu:  %user   %nice %system %iowait  %steal   %idle
+           2.02    0.00    0.34    0.00    0.00   97.64
+
+Device:         rrqm/s   wrqm/s     r/s     w/s    rkB/s    wkB/s avgrq-sz avgqu-sz   await r_await w_await  svctm  %util
+vda               0.00     0.00    0.00    1.68     0.00    16.16    19.20     0.00    0.20    0.00    0.20   0.20   0.03
+</code></pre></div><ul><li>列说明：
+<ul><li><code>rrqm/s</code>: 每秒对该设备的读请求被合并次数，文件系统会对读取同块(block)的请求进行合并</li> <li><code>wrqm/s</code>: 每秒对该设备的写请求被合并次数</li> <li><code>r/s</code>: 每秒完成的读次数</li> <li><code>w/s</code>: 每秒完成的写次数</li> <li><code>rkB/s</code>: 每秒读数据量(kB为单位)</li> <li><code>wkB/s</code>: 每秒写数据量(kB为单位)</li> <li><code>avgrq-sz</code>:平均每次IO操作的数据量(扇区数为单位)</li> <li><code>avgqu-sz</code>: 平均等待处理的IO请求队列长度（队列长度大于 1 表示设备处于饱和状态。）</li> <li><code>await</code>: 系统发往 IO 设备的请求的平均响应时间(毫秒为单位)。这包括请求排队的时间，以及请求处理的时间。超过经验值的平均响应时间表明设备处于饱和状态，或者设备有问题。</li> <li><code>svctm</code>: 平均每次IO请求的处理时间(毫秒为单位)</li> <li><code>%util</code>: 采用周期内用于IO操作的时间比率，即IO队列非空的时间比率（就是繁忙程度，值越高表示越繁忙）</li></ul></li> <li><strong>总结</strong> <ul><li><code>iowait%</code> 表示CPU等待IO时间占整个CPU周期的百分比，如果iowait值超过50%，或者明显大于%system、%user以及%idle，表示IO可能存在问题。</li> <li><code>%util</code> （重点参数）表示磁盘忙碌情况，一般该值超过80%表示该磁盘可能处于繁忙状态</li></ul></li></ul> <h4 id="硬盘-io-监控"><a href="#硬盘-io-监控" class="header-anchor">#</a> 硬盘 IO 监控</h4> <ul><li><p>安装 iotop：<code>yum install -y iotop</code></p></li> <li><p>查看所有进程 I/O 情况命令：<code>iotop</code></p></li> <li><p>只查看当前正在处理 I/O 的进程：<code>iotop -o</code></p></li> <li><p>只查看当前正在处理 I/O 的线程，每隔 5 秒刷新一次：<code>iotop -o -d 5</code></p></li> <li><p>只查看当前正在处理 I/O 的进程（-P 参数决定），每隔 5 秒刷新一次：<code>iotop -o -P -d 5</code></p></li> <li><p>只查看当前正在处理 I/O 的进程（-P 参数决定），每隔 5 秒刷新一次，使用 KB/s 单位（默认是 B/s）：<code>iotop -o -P -k -d 5</code></p></li> <li><p>使用 dd 命令测量服务器延迟：<code>dd if=/dev/zero of=/opt/ioTest2.txt bs=512 count=1000 oflag=dsync</code></p></li> <li><p>使用 dd 命令来测量服务器的吞吐率（写速度)：<code>dd if=/dev/zero of=/opt/ioTest1.txt bs=1G count=1 oflag=dsync</code></p> <ul><li>该命令创建了一个 10M 大小的文件 ioTest1.txt，其中参数解释：</li> <li>if 代表输入文件。如果不指定 if，默认就会从 stdin 中读取输入。</li> <li>of 代表输出文件。如果不指定 of，默认就会将 stdout 作为默认输出。</li> <li>bs 代表字节为单位的块大小。</li> <li>count 代表被复制的块数。</li> <li>/dev/zero 是一个字符设备，会不断返回0值字节（\0）。</li> <li>oflag=dsync：使用同步I/O。不要省略这个选项。这个选项能够帮助你去除 caching 的影响，以便呈现给你精准的结果。</li> <li>conv=fdatasyn: 这个选项和 oflag=dsync 含义一样。</li></ul></li> <li><p>该命令执行完成后展示的数据：</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>[root@youmeek ~]# dd if=/dev/zero of=/opt/ioTest1.txt bs=1G count=1 oflag=dsync
+记录了1+0 的读入
+记录了1+0 的写出
+1073741824字节(1.1 GB)已复制，5.43328 秒，198 MB/秒
+</code></pre></div><ul><li>利用 hdparm 测试硬盘速度：<code>yum install -y hdparm</code></li> <li>查看硬盘分区情况：<code>df -h</code>，然后根据分区测试：</li> <li>测试硬盘分区的读取速度：<code>hdparm -T /dev/sda</code></li> <li>测试硬盘分区缓存的读取速度：<code>hdparm -t /dev/sda</code></li> <li>也可以以上两个参数一起测试：<code>hdparm -Tt /dev/sda</code>，结果数据如下：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>/dev/sda:
+Timing cached reads:   3462 MB in  2.00 seconds = 1731.24 MB/sec
+Timing buffered disk reads: 806 MB in  3.00 seconds = 268.52 MB/sec
+</code></pre></div><h5 id="pidstat-采样硬盘使用情况"><a href="#pidstat-采样硬盘使用情况" class="header-anchor">#</a> pidstat 采样硬盘使用情况</h5> <ul><li>安装：<code>yum install -y sysstat</code></li> <li>每隔 2 秒采样一次，一共 3 次：<code>pidstat -d 2 3</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Linux 3.10.0-693.el7.x86_64 (youmeek) 	07/17/2018 	_x86_64_	(8 CPU)
+
+11:57:29 AM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+
+11:57:31 AM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+11:57:33 AM     0     24757      0.00      2.00      0.00  java
+11:57:33 AM     0     24799      0.00     14.00      0.00  java
+
+11:57:33 AM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+11:57:35 AM     0     24841      0.00      8.00      0.00  java
+
+Average:      UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s  Command
+Average:        0     24757      0.00      0.66      0.00  java
+Average:        0     24799      0.00      4.65      0.00  java
+Average:        0     24841      0.00      2.66      0.00  java
+</code></pre></div><ul><li>输出指标含义：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>kB_rd/s: 每秒进程从磁盘读取的数据量(以 kB 为单位)
+kB_wr/s: 每秒进程向磁盘写的数据量(以 kB 为单位)
+kB_ccwr/s：任务取消的写入磁盘的 KB。当任务截断脏的 pagecache 的时候会发生。
+</code></pre></div><hr> <h2 id="网络监控"><a href="#网络监控" class="header-anchor">#</a> 网络监控</h2> <h4 id="网络监控常用"><a href="#网络监控常用" class="header-anchor">#</a> 网络监控常用</h4> <ul><li>安装 iftop（需要有 EPEL 源）：<code>yum install -y iftop</code> <ul><li>如果没有 EPEL 源：<code>yum install -y epel-release</code></li></ul></li> <li>常用命令：
+<ul><li><code>iftop</code>：默认是监控第一块网卡的流量</li> <li><code>iftop -i eth0</code>：监控 eth0</li> <li><code>iftop -n</code>：直接显示IP, 不进行DNS反解析</li> <li><code>iftop -N</code>：直接显示连接埠编号, 不显示服务名称</li> <li><code>iftop -F 192.168.1.0/24 or 192.168.1.0/255.255.255.0</code>：显示某个网段进出封包流量</li> <li><code>iftop -nP</code>：显示端口与 IP 信息</li></ul></li></ul> <div class="language-nginx extra-class"><pre class="language-nginx"><code>中间部分：外部连接列表，即记录了哪些ip正在和本机的网络连接
+
+右边部分：实时参数分别是该访问 ip 连接到本机 2 秒，10 秒和 40 秒的平均流量
+
+=&gt; 代表发送数据，&lt;= 代表接收数据
+
+底部会显示一些全局的统计数据，peek 是指峰值情况，cumm 是从 iftop 运行至今的累计情况，而 rates 表示最近 2 秒、10 秒、40 秒内总共接收或者发送的平均网络流量。
+
+TX:（发送流量）  cumm:   143MB   peak:   10.5Mb    rates:   1.03Mb  1.54Mb  2.10Mb
+RX:（接收流量）          12.7GB          228Mb              189Mb   191Mb   183Mb
+TOTAL:（总的流量）       12.9GB          229Mb              190Mb   193Mb   185MbW
+
+</code></pre></div><h3 id="端口使用情况-也可以用来查看端口占用"><a href="#端口使用情况-也可以用来查看端口占用" class="header-anchor">#</a> 端口使用情况（也可以用来查看端口占用）</h3> <h4 id="lsof"><a href="#lsof" class="header-anchor">#</a> lsof</h4> <ul><li>安装 lsof：<code>yum install -y lsof</code></li> <li>查看 3316 端口是否有被使用（macOS 也适用）：<code>lsof -i:3316</code>，<strong>有被使用会输出类似如下信息，如果没被使用会没有任何信息返回</strong></li></ul> <div class="language- extra-class"><pre class="language-text"><code>COMMAND     PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+java      12011 root   77u  IPv6 4506842      0t0  TCP JDu4e00u53f7:58560-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   78u  IPv6 4506843      0t0  TCP JDu4e00u53f7:58576-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   79u  IPv6 4506844      0t0  TCP JDu4e00u53f7:58578-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   80u  IPv6 4506845      0t0  TCP JDu4e00u53f7:58574-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   82u  IPv6 4506846      0t0  TCP JDu4e00u53f7:58562-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   83u  IPv6 4506847      0t0  TCP JDu4e00u53f7:58564-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   84u  IPv6 4506848      0t0  TCP JDu4e00u53f7:58566-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   85u  IPv6 4506849      0t0  TCP JDu4e00u53f7:58568-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   86u  IPv6 4506850      0t0  TCP JDu4e00u53f7:58570-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+java      12011 root   87u  IPv6 4506851      0t0  TCP JDu4e00u53f7:58572-&gt;116.196.110.69:aicc-cmi (ESTABLISHED)
+docker-pr 13551 root    4u  IPv6 2116824      0t0  TCP *:aicc-cmi (LISTEN)
+</code></pre></div><h4 id="netstat"><a href="#netstat" class="header-anchor">#</a> netstat</h4> <ul><li>更多用法可以看：<a href="https://linux.cn/article-2434-1.html" target="_blank" rel="noopener noreferrer">netstat 的10个基本用法<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>查看所有在用的端口（macOS 也适用）：<code>netstat -ntlp</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      1/systemd           
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      746/sshd            
+tcp        0      0 127.0.0.1:32000         0.0.0.0:*               LISTEN      12011/java          
+tcp6       0      0 :::9066                 :::*                    LISTEN      12011/java          
+tcp6       0      0 :::6379                 :::*                    LISTEN      28668/docker-proxy  
+tcp6       0      0 :::111                  :::*                    LISTEN      1/systemd           
+tcp6       0      0 :::3316                 :::*                    LISTEN      13551/docker-proxy  
+tcp6       0      0 :::22                   :::*                    LISTEN      746/sshd            
+tcp6       0      0 :::35224                :::*                    LISTEN      12011/java          
+tcp6       0      0 :::3326                 :::*                    LISTEN      14203/docker-proxy  
+tcp6       0      0 :::1984                 :::*                    LISTEN      12011/java          
+tcp6       0      0 :::8066                 :::*                    LISTEN      12011/java          
+tcp6       0      0 :::43107                :::*                    LISTEN      12011/java 
+</code></pre></div><ul><li>查看当前连接80端口的机子有多少，并且是属于什么状态：<code>netstat -an|grep 80|sort -r</code></li> <li>查看已经连接的IP有多少连接数：<code>netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n</code></li> <li>查看已经连接的IP有多少连接数，只显示前 5 个：<code>netstat -ntu | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n | head -5</code></li> <li>查看每个 ip 跟服务器建立的连接数：<code>netstat -nat|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>262 127.0.0.1
+118
+103 172.22.100.141
+ 12 172.22.100.29
+  7 172.22.100.183
+  6 116.21.17.144
+  6 0.0.0.0
+  5 192.168.1.109
+  4 172.22.100.32
+  4 172.22.100.121
+  4 172.22.100.108
+  4 172.18.1.39
+  3 172.22.100.2
+  3 172.22.100.190
+</code></pre></div><ul><li>统计当前连接的一些状态情况：<code>netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'</code> 或者 <code>netstat -nat |awk '{print $6}'|sort|uniq -c|sort -rn</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>TIME_WAIT 96（是表示系统在等待客户端响应，以便再次连接时候能快速响应，如果积压很多，要开始注意了，准备阻塞了。这篇文章可以看下：http://blog.51cto.com/jschu/1728001）
+CLOSE_WAIT 11（如果积压很多，要开始注意了，准备阻塞了。可以看这篇文章：http://blog.51cto.com/net881004/2164020）
+FIN_WAIT2 17
+ESTABLISHED 102（表示正常数据传输状态）
+</code></pre></div><ul><li>TIME_WAIT 和 CLOSE_WAIT 说明：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Linux 系统下，TCP连接断开后，会以TIME_WAIT状态保留一定的时间，然后才会释放端口。当并发请求过多的时候，就会产生大量的TIME_WAIT状态 的连接，无法及时断开的话，会占用大量的端口资源和服务器资源。这个时候我们可以优化TCP的内核参数，来及时将TIME_WAIT状态的端口清理掉。
+
+来源：http://zhangbin.junxilinux.com/?p=219
+
+=================================
+
+出现大量close_wait的现象，主要原因是某种情况下对方关闭了socket链接，但是另一端由于正在读写，没有关闭连接。代码需要判断socket，一旦读到0，断开连接，read返回负，检查一下errno，如果不是AGAIN，就断开连接。
+Linux分配给一个用户的文件句柄是有限的，而TIME_WAIT和CLOSE_WAIT两种状态如果一直被保持，那么意味着对应数目的通道就一直被占着，一旦达到句柄数上限，新的请求就无法被处理了，接着就是大量Too Many Open Files异常，导致tomcat崩溃。关于TIME_WAIT过多的解决方案参见TIME_WAIT数量太多。
+
+常见错误原因：
+1.代码层面上未对连接进行关闭，比如关闭代码未写在 finally 块关闭，如果程序中发生异常就会跳过关闭代码，自然未发出指令关闭，连接一直由程序托管，内核也无权处理，自然不会发出 FIN 请求，导致连接一直在 CLOSE_WAIT 。
+2.程序响应过慢，比如双方进行通讯，当客户端请求服务端迟迟得不到响应，就断开连接，重新发起请求，导致服务端一直忙于业务处理，没空去关闭连接。这种情况也会导致这个问题。一般如果有多个节点，nginx 进行负载，其中某个节点很高，其他节点不高，那可能就是负载算法不正常，都落在一台机子上了，以至于它忙不过来。
+
+来源：https://juejin.im/post/5b59e61ae51d4519634fe257
+</code></pre></div><ul><li>查看网络接口接受、发送的数据包情况（每隔 3 秒统计一次）：<code>netstat -i 3</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Kernel Interface table
+Iface      MTU    RX-OK RX-ERR RX-DRP RX-OVR    TX-OK TX-ERR TX-DRP TX-OVR Flg
+eth0      1500 10903298      0      0 0      10847741      0      0      0 BMRU
+lo       65536   453650      0      0 0        453650      0      0      0 LRU
+eth0      1500 10903335      0      0 0      10847777      0      0      0 BMRU
+lo       65536   453650      0      0 0        453650      0      0      0 LRU
+eth0      1500 10903363      0      0 0      10847798      0      0      0 BMRU
+lo       65536   453650      0      0 0        453650      0      0      0 LRU
+eth0      1500 10903393      0      0 0      10847836      0      0      0 BMRU
+lo       65536   453650      0      0 0        453650      0      0      0 LRU
+eth0      1500 10903437      0      0 0      10847867      0      0      0 BMRU
+lo       65536   453650      0      0 0        453650      0      0      0 LRU
+</code></pre></div><ul><li>接收（该值是历史累加数据，不是瞬间数据，要计算时间内的差值需要自己减）：
+<ul><li>RX-OK 已接收字节数</li> <li>RX-ERR 已接收错误字节数（数据值大说明网络存在问题）</li> <li>RX-DRP 已丢失字节数（数据值大说明网络存在问题）</li> <li>RX-OVR 由于误差而遗失字节数（数据值大说明网络存在问题）</li></ul></li> <li>发送（该值是历史累加数据，不是瞬间数据，要计算时间内的差值需要自己减）：
+<ul><li>TX-OK 已发送字节数</li> <li>TX-ERR 已发送错误字节数（数据值大说明网络存在问题）</li> <li>TX-DRP 已丢失字节数（数据值大说明网络存在问题）</li> <li>TX-OVR 由于误差而遗失字节数（数据值大说明网络存在问题）</li></ul></li></ul> <h4 id="网络排查"><a href="#网络排查" class="header-anchor">#</a> 网络排查</h4> <ul><li>ping 命令查看丢包、域名解析地址
+<ul><li><code>ping 116.196.110.69</code></li> <li><code>ping www.GitNavi.com</code></li></ul></li> <li>telnet 测试端口的连通性（验证服务的可用性）
+<ul><li><code>yum install -y telnet</code></li> <li><code>telnet 116.196.110.68 3306</code></li> <li><code>telnet www.youmeek.com 80</code></li></ul></li> <li>tracert（跟踪路由）查看网络请求节点访问情况，用于确定 IP 数据报访问目标所采取的路径。
+<ul><li><code>yum install -y traceroute</code></li> <li><code>traceroute gitnavi.com</code></li></ul></li> <li>nslookup 命令查看 DNS 是否可用
+<ul><li><code>yum install -y bind-utils</code></li> <li>输入：<code>nslookup</code>，然后终端进入交互模式，然后输入：<code>www.baidu.com</code>，此时会展示类似这样的信息：</li></ul></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Server:		103.224.222.221（这个是你本机的信息）
+Address:	103.224.222.221#53（这个是你本机的信息）
+
+（下面是百度的信息）
+Non-authoritative answer:
+www.baidu.COM	canonical name = www.a.shifen.COM.
+Name:	www.a.shifen.COM
+Address: 220.181.112.244
+Name:	www.a.shifen.COM
+Address: 220.181.111.188
+</code></pre></div><ul><li>此时我们假设换个 DNS，我们在刚刚的交互阶段继续输入：<code>server 8.8.8.8</code>，表示我们此时用 8.8.8.8 的 DNS，然后我们在交互中再输入：<code>www.baidu.com</code>，此时会出现这个信息：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Server:		8.8.8.8
+Address:	8.8.8.8#53
+
+Non-authoritative answer:
+www.baidu.com	canonical name = www.a.shifen.com.
+Name:	www.a.shifen.com
+Address: 180.97.33.108
+Name:	www.a.shifen.com
+Address: 180.97.33.107
+</code></pre></div><ul><li>以上表明，不同的 DNS 情况下，我们获取到的域名所属 IP 是不同的。</li></ul> <hr> <h2 id="查看-linux-内核版本"><a href="#查看-linux-内核版本" class="header-anchor">#</a> 查看 Linux 内核版本</h2> <ul><li>对于一些复杂的层面问题，一般都要先确认内核版本，好帮助分析：<code>uname -r</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>3.10.0-693.2.2.el7.x86_64
+</code></pre></div><h2 id="dmesg-打印内核信息"><a href="#dmesg-打印内核信息" class="header-anchor">#</a> dmesg 打印内核信息</h2> <ul><li>开机信息存在：<code>tail -500f /var/log/dmesg</code></li> <li>查看尾部信息：<code>dmesg -T | tail</code> <ul><li>参数 <code>-T</code> 表示显示时间</li></ul></li> <li>只显示 error 和 warning 信息：<code>dmesg --level=err,warn -T</code></li> <li>有些 OOM 的错误会在这里显示，比如：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>[1880957.563400] Out of memory: Kill process 18694 (perl) score 246 or sacrifice child
+[1880957.563408] Killed process 18694 (perl) total-vm:1972392kB, anon-rss:1953348kB, file-rss:0kB
+</code></pre></div><h2 id="查看系统日志"><a href="#查看系统日志" class="header-anchor">#</a> 查看系统日志</h2> <ul><li>查看系统日志：<code>tail -400f /var/log/messages</code></li> <li>可能会看到类似以下异常：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Out of memory: Kill process 19452 (java) score 264 or sacrifice child
+</code></pre></div><hr> <h2 id="服务器故障排查顺序"><a href="#服务器故障排查顺序" class="header-anchor">#</a> 服务器故障排查顺序</h2> <h4 id="请求时好时坏"><a href="#请求时好时坏" class="header-anchor">#</a> 请求时好时坏</h4> <ul><li>系统层面
+<ul><li>查看负载、CPU、内存、上线时间、高资源进程 PID：<code>htop</code></li> <li>查看网络丢失情况：<code>netstat -i 3</code>，关注：RX-DRP、TX-DRP，如果两个任何一个有值，或者都有值，肯定是网络出了问题（该值是历史累加数据，不是瞬间数据）。</li></ul></li> <li>应用层面
+<ul><li>临时修改 nginx log 输出格式，输出完整信息，包括请求头</li></ul></li></ul> <div class="language- extra-class"><pre class="language-text"><code>$request_body   请求体（含POST数据）
+$http_XXX       指定某个请求头（XXX为字段名，全小写）
+$cookie_XXX     指定某个cookie值（XXX为字段名，全小写）
+
+
+类似用法：
+log_format  special_main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    '$status $body_bytes_sent &quot;$request_body&quot; &quot;$http_referer&quot; '
+    '&quot;$http_user_agent&quot; $http_x_forwarded_for &quot;appid=$http_appid,appver=$http_appver,vuser=$http_vuser&quot; '
+    '&quot;phpsessid=$cookie_phpsessid,vuser_cookie=$cookie___vuser&quot; ';
+
+
+access_log  /home/wwwlogs/hicrew.log special_main;
+
+</code></pre></div><h4 id="cpu-高-负载高-访问慢-没有数据库"><a href="#cpu-高-负载高-访问慢-没有数据库" class="header-anchor">#</a> CPU 高，负载高，访问慢（没有数据库）</h4> <ul><li><strong>记录负载开始升高的时间</strong></li> <li>常见场景
+<ul><li>虚拟机所在的宿主机资源瓶颈，多个虚拟机竞争资源</li> <li>定时任务大量的任务并发</li> <li>消息、请求堆积后恢复时的瞬时流量引起</li> <li>持久化任务引起</li> <li>更多可以看这篇：<a href="https://blog.csdn.net/freeiceflame/article/details/78006812" target="_blank" rel="noopener noreferrer">线上异常排查总结<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li>系统层面
+<ul><li>查看负载、CPU、内存、上线时间、高资源进程 PID：<code>htop</code></li> <li>查看磁盘使用情况：<code>df -h</code></li> <li>查看磁盘当前情况：<code>iostat -x -k 3 3</code>。如果发现当前磁盘忙碌，则查看是哪个 PID 在忙碌：<code>iotop -o -P -k -d 5</code></li> <li>查看 PID 具体在写什么东西：<code>lsof -p PID</code></li> <li>查看系统日志：<code>tail -400f /var/log/messages</code></li> <li>查看简化线程树：<code>pstree -a &gt;&gt; /opt/pstree-20180915.log</code></li> <li>其他机子 ping（多个地区 ping），看下解析 IP 与网络丢包</li> <li>查看网络节点情况：<code>traceroute www.youmeek.com</code></li> <li><code>ifconfig</code> 查看 dropped 和 error 是否在不断增加，判断网卡是否出现问题</li> <li><code>nslookup</code> 命令查看 DNS 是否可用</li> <li>如果 nginx 有安装：http_stub_status_module 模块，则查看当前统计</li> <li>查看 TCP 和 UDP 应用
+<ul><li><code>netstat -ntlp</code></li> <li><code>netstat -nulp</code></li></ul></li> <li>统计当前连接的一些状态情况：<code>netstat -nat |awk '{print $6}'|sort|uniq -c|sort -rn</code></li> <li>查看每个 ip 跟服务器建立的连接数：<code>netstat -nat|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn</code></li> <li>查看与后端应用端口连接的有多少：<code>lsof -i:8080|grep 'TCP'|wc -l</code></li> <li>跟踪程序（按 <code>Ctrl + C</code> 停止跟踪）：<code>strace -tt -T -v -f -e trace=file -o /opt/strace-20180915.log -s 1024 -p PID</code></li> <li>看下谁在线：<code>w</code>，<code>last</code></li> <li>看下执行了哪些命令：<code>history</code></li></ul></li> <li>程序、JVM 层面
+<ul><li>保存、查看 Nginx 程序 log
+<ul><li>通过 GoAccess 分析 log</li></ul></li> <li>保存、查看 Java 程序 log</li> <li>使用内置 tomcat-manager 监控配置，或者使用类似工具：psi-probe</li> <li>使用 <code>ps -ef | grep java</code>，查看进程 PID
+<ul><li>根据高 CPU 的进程 PID，查看其线程 CPU 使用情况：<code>top -Hp PID</code>，找到占用 CPU 资源高的线程 PID</li></ul></li> <li>保存堆栈情况：<code>jstack -l PID &gt;&gt; /opt/jstack-tomcat1-PID-20180917.log</code> <ul><li>把占用 CPU 资源高的线程十进制的 PID 转换成 16 进制：<code>printf &quot;%x\n&quot; PID</code>，比如：<code>printf &quot;%x\n&quot; 12401</code> 得到结果是：<code>3071</code></li> <li>在刚刚输出的那个 log 文件中搜索：<code>3071</code>，可以找到：<code>nid=0x3071</code></li></ul></li> <li>使用 <code>jstat -gc PID 10000 10</code>，查看gc情况（截图）</li> <li>使用 <code>jstat -gccause PID</code>：额外输出上次GC原因（截图）</li> <li>使用 <code>jstat -gccause PID 10000 10</code>：额外输出上次GC原因，收集 10 次，每隔 10 秒</li> <li>使用 <code>jmap -dump:format=b,file=/opt/dumpfile-tomcat1-PID-20180917.hprof PID</code>，生成堆转储文件
+<ul><li>使用 jhat 或者可视化工具（Eclipse Memory Analyzer 、IBM HeapAnalyzer）分析堆情况。</li></ul></li> <li>结合代码解决内存溢出或泄露问题。</li> <li>给 VM 增加 dump 触发参数：<code>-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/tomcat-1.hprof</code></li></ul></li></ul> <h4 id="一次-jvm-引起的-cpu-高排查"><a href="#一次-jvm-引起的-cpu-高排查" class="header-anchor">#</a> 一次 JVM 引起的 CPU 高排查</h4> <ul><li>使用 <code>ps -ef | grep java</code>，查看进程 PID
+<ul><li>根据高 CPU 的进程 PID，查看其线程 CPU 使用情况：<code>top -Hp PID</code>，找到占用 CPU 资源高的线程 TID</li> <li>也可以用：<code>ps -mp PID -o THREAD,tid,time</code></li></ul></li> <li>保存堆栈情况：<code>jstack -l TID &gt;&gt; /opt/jstack-tomcat1-TID-20181017.log</code></li> <li>把占用 CPU 资源高的线程十进制的 TID 转换成 16 进制：<code>printf &quot;%x\n&quot; TID</code>，比如：<code>printf &quot;%x\n&quot; 12401</code> 得到结果是：<code>3071</code></li> <li>在刚刚输出的那个 log 文件中搜索：<code>3071</code>，可以找到：<code>nid=0x3071</code></li> <li>也可以在终端中直接看：<code>jstack TID |grep 十六进制线程 -A 30</code>，此时如果发现如下：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>&quot;GC task thread#0 (ParallelGC)&quot; os_prio=0 tid=0x00007fd0ac01f000 nid=0x66f runnable 
+</code></pre></div><ul><li>这种情况一般是 heap 设置得过小，而又要频繁分配对象；二是内存泄露，对象一直不能被回收，导致 CPU 占用过高</li> <li>使用：<code>jstat -gcutil PID 3000 10</code>：</li> <li>正常情况结果应该是这样的：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>S0     S1     E      O      M     CCS    YGC     YGCT    FGC    FGCT     GCT
+0.00   0.00  67.63  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.68  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.71  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+0.00   0.00  67.71  38.09  78.03  68.82    124    0.966     5    0.778    1.744
+
+</code></pre></div><ul><li>S0：SO 当前使用比例</li> <li>S1：S1 当前使用比例</li> <li>E：<strong>Eden 区使用比例（百分比）（异常的时候，这里可能会接近 100%）</strong></li> <li>O：<strong>old 区使用比例（百分比）（异常的时候，这里可能会接近 100%）</strong></li> <li>M：<strong>Metaspace 区使用比例（百分比）（异常的时候，这里可能会接近 100%）</strong></li> <li>CCS：压缩使用比例</li> <li>YGC：年轻代垃圾回收次数</li> <li>FGC：老年代垃圾回收次数</li> <li>FGCT：老年代垃圾回收消耗时间（单位秒）</li> <li>GCT：垃圾回收消耗总时间（单位秒）</li> <li><strong>异常的时候每次 Full GC 时间也可能非常长，每次时间计算公式=FGCT值/FGC指）</strong></li> <li><code>jmap -heap PID</code>，查看具体占用量是多大</li> <li>使用 <code>jmap -dump:format=b,file=/opt/dumpfile-tomcat1-PID-20180917.hprof PID</code>，生成堆转储文件（如果设置的 heap 过大，dump 下来会也会非常大）
+<ul><li>使用 jhat 或者可视化工具（Eclipse Memory Analyzer 、IBM HeapAnalyzer）分析堆情况。</li> <li>一般这时候就只能根据 jhat 的分析，看源码了</li></ul></li> <li>这里有几篇类似经历的文章推荐给大家：
+<ul><li><a href="http://luofei.me/?p=197" target="_blank" rel="noopener noreferrer">三个神奇bug之Java占满CPU<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://zhouyun.me/2017/10/24/cpu_load_issue/" target="_blank" rel="noopener noreferrer">CPU 负载过高问题排查<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul> <h4 id="cpu-低-负载高-访问慢-带数据库"><a href="#cpu-低-负载高-访问慢-带数据库" class="header-anchor">#</a> CPU 低，负载高，访问慢（带数据库）</h4> <ul><li>基于上面，但是侧重点在于 I/O 读写，以及是否有 MySQL 死锁，或者挂载了 NFS，而 NFS Server 出现问题</li> <li>mysql 下查看当前的连接数与执行的sql 语句：<code>show full processlist;</code></li> <li>检查慢查询日志，可能是慢查询引起负载高，根据配置文件查看存放位置：<code>log_slow_queries</code></li> <li>查看 MySQL 设置的最大连接数：<code>show variables like 'max_connections';</code> <ul><li>重新设置最大连接数：<code>set GLOBAL max_connections=300</code></li></ul></li></ul> <h2 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h2> <ul><li><a href="http://man.linuxde.net/dd" target="_blank" rel="noopener noreferrer">http://man.linuxde.net/dd<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://linux.cn/article-6104-1.html" target="_blank" rel="noopener noreferrer">https://linux.cn/article-6104-1.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858923.html" target="_blank" rel="noopener noreferrer">http://www.cnblogs.com/ggjucheng/archive/2013/01/13/2858923.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://coolnull.com/3649.html" target="_blank" rel="noopener noreferrer">http://coolnull.com/3649.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://www.rfyy.net/archives/2456.html" target="_blank" rel="noopener noreferrer">http://www.rfyy.net/archives/2456.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://programmerfamily.com/blog/linux/sav.html" target="_blank" rel="noopener noreferrer">http://programmerfamily.com/blog/linux/sav.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.jianshu.com/p/3991c0dba094" target="_blank" rel="noopener noreferrer">https://www.jianshu.com/p/3991c0dba094<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.jianshu.com/p/3667157d63bb" target="_blank" rel="noopener noreferrer">https://www.jianshu.com/p/3667157d63bb<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.cnblogs.com/yjd_hycf_space/p/7755633.html" target="_blank" rel="noopener noreferrer">https://www.cnblogs.com/yjd_hycf_space/p/7755633.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://silverd.cn/2016/05/27/nginx-access-log.html" target="_blank" rel="noopener noreferrer">http://silverd.cn/2016/05/27/nginx-access-log.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/adminlove520/Linux_All_in_one/edit/main/docs/linux/ops/monitor.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3 hours ago</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/Linux_All_in_one/assets/js/app.4a61619a.js" defer></script><script src="/Linux_All_in_one/assets/js/2.ee3c5eb7.js" defer></script><script src="/Linux_All_in_one/assets/js/1.bc260717.js" defer></script><script src="/Linux_All_in_one/assets/js/71.9ff55cae.js" defer></script><script src="/Linux_All_in_one/assets/js/21.f8578145.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kubernets（K8S） 使用 | Linux_All_in_one</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/Linux_All_in_one/favicon.ico">
+    <meta name="description" content="Linux 运维、软件运维、Docker 教程、网络安全">
+    
+    <link rel="preload" href="/Linux_All_in_one/assets/css/0.styles.407428ab.css" as="style"><link rel="preload" href="/Linux_All_in_one/assets/js/app.4a61619a.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/2.ee3c5eb7.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/1.bc260717.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/36.da0b8594.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/21.f8578145.js" as="script"><link rel="prefetch" href="/Linux_All_in_one/assets/js/100.5e0212b4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/101.280ba6c4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/102.fcbe69ef.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/103.59b3bf86.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/104.628bb6be.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/105.f6a0a62b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/106.53648c35.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/107.093c4fab.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/108.f8895b2f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/109.878b5e6d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/110.e7dbd5ce.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/12.4bdd7f50.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/13.4850c8c8.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/14.66e24ed5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/15.41d57e79.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/16.96600c16.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/17.1cd68a21.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/18.f54ebd77.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/19.36d25975.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/20.0120ca8c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/22.9efa850b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/23.d7f5441c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/24.1cabd94c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/25.2cb5712a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/26.440ab754.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/27.94e60af2.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/28.f1611369.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/29.730dead3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/3.accc0318.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/30.f69c3378.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/31.be2478fc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/32.9465ce70.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/33.f4c85e8a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/34.c3a0ece1.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/35.a75dd538.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/37.c49eb234.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/38.16f7d0e5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/39.ba6e47f0.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/4.9736648b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/40.664ddb58.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/41.4189f6ca.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/42.6472b832.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/43.c8d06688.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/44.e39a047e.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/45.39945860.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/46.ccbd9cdc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/47.9bed3a75.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/48.05ecd397.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/49.4f2f2874.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/5.9a4eb5c9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/50.d01632db.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/51.ad40e5f5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/52.bfacfa08.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/53.9398692c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/54.b34cb199.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/55.6735c148.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/56.575312d7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/57.d54f0ac7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/58.f3cc4cf5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/59.881dba8f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/6.a3475002.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/60.859faf8a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/61.4efca474.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/62.578a9742.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/63.95e6ff4f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/64.054ab297.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/65.5be33d9b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/66.2312529e.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/67.81dd084d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/68.a11966f3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/69.ffbf7d57.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/7.b4d90be9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/70.51883659.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/71.9ff55cae.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/72.d54e184f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/73.5062fbf7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/74.0721cccd.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/75.42dd3581.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/76.d590fa57.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/77.0e5953f3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/78.4bb79720.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/79.48030292.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/80.d036bc22.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/81.d6524746.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/82.93460687.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/83.7c6f2e4a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/84.83b1808d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/85.14c12ffc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/86.893b5c41.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/87.7d10879f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/88.ef12068f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/89.cc81e4e4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/90.130454fc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/91.838da398.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/92.22813cd9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/93.2000427b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/94.062717c8.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/95.9cc81974.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/96.0457546b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/97.71d6bbd5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/98.e6299973.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/99.b198a395.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~docsearch.00f0a528.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~flowchart.d07b8b19.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~notification.877bb3fc.js">
+    <link rel="stylesheet" href="/Linux_All_in_one/assets/css/0.styles.407428ab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Linux_All_in_one/" class="home-link router-link-active"><img src="/Linux_All_in_one/images/dunwu-logo-100.png" alt="Linux_All_in_one" class="logo"> <span class="site-name can-hide">Linux_All_in_one</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Linux_All_in_one/linux/cli/" class="nav-link">
+  💻 Linux 命令
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/ops/" class="nav-link">
+  ⚙️ Linux 运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/soft/" class="nav-link">
+  📦 Linux 软件运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/docker/" class="nav-link router-link-active">
+  🐳 Docker 教程
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/Cybersecurity/" class="nav-link">
+  🔒 Linux与网络安全
+</a></div> <a href="https://github.com/adminlove520/Linux_All_in_one" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Linux_All_in_one/linux/cli/" class="nav-link">
+  💻 Linux 命令
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/ops/" class="nav-link">
+  ⚙️ Linux 运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/soft/" class="nav-link">
+  📦 Linux 软件运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/docker/" class="nav-link router-link-active">
+  🐳 Docker 教程
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/Cybersecurity/" class="nav-link">
+  🔒 Linux与网络安全
+</a></div> <a href="https://github.com/adminlove520/Linux_All_in_one" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Kubernets（K8S） 使用</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux_All_in_one/docker/K8S-Install-And-Usage.html#环境说明" class="sidebar-link">环境说明</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/docker/K8S-Install-And-Usage.html#kubernetes" class="sidebar-link">Kubernetes</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/docker/K8S-Install-And-Usage.html#资料" class="sidebar-link">资料</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="kubernets-k8s-使用"><a href="#kubernets-k8s-使用" class="header-anchor">#</a> Kubernets（K8S） 使用</h1> <h2 id="环境说明"><a href="#环境说明" class="header-anchor">#</a> 环境说明</h2> <ul><li>CentOS 7.5（不准确地说：要求必须是 CentOS 7 64位）</li> <li>Docker</li></ul> <h2 id="kubernetes"><a href="#kubernetes" class="header-anchor">#</a> Kubernetes</h2> <ul><li>目前流行的容器编排系统</li> <li>简称：K8S</li> <li>官网：<a href="https://kubernetes.io/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>主要解决几个问题：
+<ul><li><code>调度</code></li> <li><code>生命周期及健康状况</code></li> <li><code>服务发现</code></li> <li><code>监控</code></li> <li><code>认证</code></li> <li><code>容器聚合</code></li></ul></li> <li>主要角色：Master、Node</li></ul> <h4 id="安装准备-kubernetes-1-13-版本"><a href="#安装准备-kubernetes-1-13-版本" class="header-anchor">#</a> 安装准备 - Kubernetes 1.13 版本</h4> <ul><li>推荐最低 2C2G，优先：2C4G 或以上</li> <li>特别说明：1.13 之前的版本，由于网络问题，需要各种设置，这里就不再多说了。1.13 之后相对就简单了点。</li> <li>优先官网软件包：kubeadm</li> <li>官网资料：
+<ul><li>issues 入口：<a href="https://github.com/kubernetes/kubeadm" target="_blank" rel="noopener noreferrer">https://github.com/kubernetes/kubeadm<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>源码入口：<a href="https://github.com/kubernetes/kubernetes/tree/master/cmd/kubeadm" target="_blank" rel="noopener noreferrer">https://github.com/kubernetes/kubernetes/tree/master/cmd/kubeadm<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>安装指导：<a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/setup/independent/install-kubeadm/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>按官网要求做下检查：<a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/#before-you-begin" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/setup/independent/install-kubeadm/#before-you-begin<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>网络环境：<a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/#verify-the-mac-address-and-product-uuid-are-unique-for-every-node" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/setup/independent/install-kubeadm/#verify-the-mac-address-and-product-uuid-are-unique-for-every-node<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>端口检查：<a href="https://kubernetes.io/docs/setup/independent/install-kubeadm/#check-required-ports" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/setup/independent/install-kubeadm/#check-required-ports<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><strong>对 Docker 版本的支持，这里官网推荐的是 18.06</strong>：<a href="https://kubernetes.io/docs/setup/release/notes/#sig-cluster-lifecycle" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/setup/release/notes/#sig-cluster-lifecycle<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li>三大核心工具包，都需要各自安装，并且注意版本关系：
+<ul><li><code>kubeadm</code>: the command to bootstrap the cluster.
+<ul><li>集群部署、管理工具</li></ul></li> <li><code>kubelet</code>: the component that runs on all of the machines in your cluster and does things like starting pods and containers.
+<ul><li>具体执行层面的管理 Pod 和 Docker 工具</li></ul></li> <li><code>kubectl</code>: the command line util to talk to your cluster.
+<ul><li>操作 k8s 的命令行入口工具</li></ul></li></ul></li> <li>官网插件安装过程的故障排查：<a href="https://kubernetes.io/docs/setup/independent/troubleshooting-kubeadm/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/setup/independent/troubleshooting-kubeadm/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>其他部署方案：
+<ul><li><a href="https://github.com/coreos/tectonic-installer" target="_blank" rel="noopener noreferrer">https://github.com/coreos/tectonic-installer<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://github.com/kubernetes-incubator/kubespray" target="_blank" rel="noopener noreferrer">https://github.com/kubernetes-incubator/kubespray<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://github.com/apprenda/kismatic" target="_blank" rel="noopener noreferrer">https://github.com/apprenda/kismatic<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li></ul> <h4 id="开始安装-kubernetes-1-13-3-版本"><a href="#开始安装-kubernetes-1-13-3-版本" class="header-anchor">#</a> 开始安装 - Kubernetes 1.13.3 版本</h4> <ul><li>三台机子：
+<ul><li>master-1：<code>192.168.0.127</code></li> <li>node-1：<code>192.168.0.128</code></li> <li>node-2：<code>192.168.0.129</code></li></ul></li> <li>官网最新版本：<a href="https://github.com/kubernetes/kubernetes/releases" target="_blank" rel="noopener noreferrer">https://github.com/kubernetes/kubernetes/releases<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>官网 1.13 版本的 changelog：<a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md" target="_blank" rel="noopener noreferrer">https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.13.md<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><strong>所有节点安装 Docker 18.06，并设置阿里云源</strong> <ul><li>可以参考：<a href="https://github.com/judasn/Linux-Tutorial/blob/master/favorite-file/shell/install_docker_k8s_disable_firewalld_centos7-aliyun.sh" target="_blank" rel="noopener noreferrer">点击我o(∩_∩)o <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>核心，查看可以安装的 Docker 列表：<code>yum list docker-ce --showduplicates</code></li></ul></li> <li>所有节点设置 kubernetes repo 源，并安装 Kubeadm、Kubelet、Kubectl 都设置阿里云的源</li> <li>Kubeadm 初始化集群过程当中，它会下载很多的镜像，默认也是去 Google 家里下载。但是 1.13 新增了一个配置：<code>--image-repository</code> 算是救了命。</li></ul> <h4 id="安装具体流程"><a href="#安装具体流程" class="header-anchor">#</a> 安装具体流程</h4> <ul><li>同步所有机子时间：<code>systemctl start chronyd.service &amp;&amp; systemctl enable chronyd.service</code></li> <li>所有机子禁用防火墙、selinux、swap</li></ul> <div class="language- extra-class"><pre class="language-text"><code>systemctl stop firewalld.service
+systemctl disable firewalld.service
+systemctl disable iptables.service
+
+iptables -P FORWARD ACCEPT
+
+setenforce 0 &amp;&amp; sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
+
+echo &quot;vm.swappiness = 0&quot; &gt;&gt; /etc/sysctl.conf
+swapoff -a &amp;&amp; sysctl -w vm.swappiness=0
+</code></pre></div><ul><li>给各自机子设置 hostname 和 hosts</li></ul> <div class="language- extra-class"><pre class="language-text"><code>hostnamectl --static set-hostname  k8s-master-1
+hostnamectl --static set-hostname  k8s-node-1
+hostnamectl --static set-hostname  k8s-node-2
+
+
+vim /etc/hosts
+192.168.0.127 k8s-master-1
+192.168.0.128 k8s-node-1
+192.168.0.129 k8s-node-2
+</code></pre></div><ul><li>给 master 设置免密</li></ul> <div class="language- extra-class"><pre class="language-text"><code>ssh-keygen -t rsa
+
+cat /root/.ssh/id_rsa.pub &gt;&gt; /root/.ssh/authorized_keys
+
+
+ssh localhost
+
+ssh-copy-id -i ~/.ssh/id_rsa.pub -p 22 root@k8s-node-1（根据提示输入 k8s-node-1 密码）
+ssh-copy-id -i ~/.ssh/id_rsa.pub -p 22 root@k8s-node-2（根据提示输入 k8s-node-2 密码）
+
+ssh k8s-master-1
+ssh k8s-node-1
+ssh k8s-node-2
+</code></pre></div><ul><li>给所有机子设置 yum 源</li></ul> <div class="language- extra-class"><pre class="language-text"><code>vim /etc/yum.repos.d/kubernetes.repo
+
+[kubernetes]
+name=Kubernetes
+baseurl=https://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+
+
+scp -r /etc/yum.repos.d/kubernetes.repo root@k8s-node-1:/etc/yum.repos.d/
+scp -r /etc/yum.repos.d/kubernetes.repo root@k8s-node-2:/etc/yum.repos.d/
+</code></pre></div><ul><li>给 master 机子创建 flannel 配置文件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>mkdir -p /etc/cni/net.d &amp;&amp; vim /etc/cni/net.d/10-flannel.conflist
+
+{
+    &quot;name&quot;: &quot;cbr0&quot;,
+    &quot;plugins&quot;: [
+        {
+            &quot;type&quot;: &quot;flannel&quot;,
+            &quot;delegate&quot;: {
+                &quot;hairpinMode&quot;: true,
+                &quot;isDefaultGateway&quot;: true
+            }
+        },
+        {
+            &quot;type&quot;: &quot;portmap&quot;,
+            &quot;capabilities&quot;: {
+                &quot;portMappings&quot;: true
+            }
+        }
+    ]
+}
+</code></pre></div><ul><li>给所有机子创建配置</li></ul> <div class="language- extra-class"><pre class="language-text"><code>vim /etc/sysctl.d/k8s.conf
+
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.ipv4.ip_forward=1
+vm.swappiness=0
+
+
+scp -r /etc/sysctl.d/k8s.conf root@k8s-node-1:/etc/sysctl.d/
+scp -r /etc/sysctl.d/k8s.conf root@k8s-node-2:/etc/sysctl.d/
+
+modprobe br_netfilter &amp;&amp; sysctl -p /etc/sysctl.d/k8s.conf
+</code></pre></div><ul><li>给所有机子安装组件</li></ul> <div class="language- extra-class"><pre class="language-text"><code>yum install -y kubelet-1.13.3 kubeadm-1.13.3 kubectl-1.13.3 --disableexcludes=kubernetes
+</code></pre></div><ul><li>给所有机子添加一个变量</li></ul> <div class="language- extra-class"><pre class="language-text"><code>vim  /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+
+最后一行添加：Environment=&quot;KUBELET_CGROUP_ARGS=--cgroup-driver=cgroupfs&quot;
+</code></pre></div><ul><li>启动所有机子</li></ul> <div class="language- extra-class"><pre class="language-text"><code>systemctl enable kubelet &amp;&amp; systemctl start kubelet
+
+kubeadm version
+kubectl version
+
+</code></pre></div><ul><li>初始化 master 节点：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+
+
+kubeadm init \
+--image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
+--pod-network-cidr 10.244.0.0/16 \
+--kubernetes-version 1.13.3 \
+--ignore-preflight-errors=Swap
+
+其中 10.244.0.0/16 是 flannel 插件固定使用的ip段，它的值取决于你准备安装哪个网络插件
+
+这个过程会下载一些 docker 镜像，时间可能会比较久，看你网络情况。
+终端会输出核心内容：
+[init] Using Kubernetes version: v1.13.3
+[preflight] Running pre-flight checks
+[preflight] Pulling images required for setting up a Kubernetes cluster
+[preflight] This might take a minute or two, depending on the speed of your internet connection
+[preflight] You can also perform this action in beforehand using 'kubeadm config images pull'
+[kubelet-start] Writing kubelet environment file with flags to file &quot;/var/lib/kubelet/kubeadm-flags.env&quot;
+[kubelet-start] Writing kubelet configuration to file &quot;/var/lib/kubelet/config.yaml&quot;
+[kubelet-start] Activating the kubelet service
+[certs] Using certificateDir folder &quot;/etc/kubernetes/pki&quot;
+[certs] Generating &quot;front-proxy-ca&quot; certificate and key
+[certs] Generating &quot;front-proxy-client&quot; certificate and key
+[certs] Generating &quot;etcd/ca&quot; certificate and key
+[certs] Generating &quot;etcd/server&quot; certificate and key
+[certs] etcd/server serving cert is signed for DNS names [k8s-master-1 localhost] and IPs [192.168.0.127 127.0.0.1 ::1]
+[certs] Generating &quot;etcd/peer&quot; certificate and key
+[certs] etcd/peer serving cert is signed for DNS names [k8s-master-1 localhost] and IPs [192.168.0.127 127.0.0.1 ::1]
+[certs] Generating &quot;etcd/healthcheck-client&quot; certificate and key
+[certs] Generating &quot;apiserver-etcd-client&quot; certificate and key
+[certs] Generating &quot;ca&quot; certificate and key
+[certs] Generating &quot;apiserver-kubelet-client&quot; certificate and key
+[certs] Generating &quot;apiserver&quot; certificate and key
+[certs] apiserver serving cert is signed for DNS names [k8s-master-1 kubernetes kubernetes.default kubernetes.default.svc kubernetes.default.svc.cluster.local] and IPs [10.96.0.1 192.168.0.127]
+[certs] Generating &quot;sa&quot; key and public key
+[kubeconfig] Using kubeconfig folder &quot;/etc/kubernetes&quot;
+[kubeconfig] Writing &quot;admin.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;kubelet.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;controller-manager.conf&quot; kubeconfig file
+[kubeconfig] Writing &quot;scheduler.conf&quot; kubeconfig file
+[control-plane] Using manifest folder &quot;/etc/kubernetes/manifests&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-apiserver&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-controller-manager&quot;
+[control-plane] Creating static Pod manifest for &quot;kube-scheduler&quot;
+[etcd] Creating static Pod manifest for local etcd in &quot;/etc/kubernetes/manifests&quot;
+[wait-control-plane] Waiting for the kubelet to boot up the control plane as static Pods from directory &quot;/etc/kubernetes/manifests&quot;. This can take up to 4m0s
+[apiclient] All control plane components are healthy after 19.001686 seconds
+[uploadconfig] storing the configuration used in ConfigMap &quot;kubeadm-config&quot; in the &quot;kube-system&quot; Namespace
+[kubelet] Creating a ConfigMap &quot;kubelet-config-1.13&quot; in namespace kube-system with the configuration for the kubelets in the cluster
+[patchnode] Uploading the CRI Socket information &quot;/var/run/dockershim.sock&quot; to the Node API object &quot;k8s-master-1&quot; as an annotation
+[mark-control-plane] Marking the node k8s-master-1 as control-plane by adding the label &quot;node-role.kubernetes.io/master=''&quot;
+[mark-control-plane] Marking the node k8s-master-1 as control-plane by adding the taints [node-role.kubernetes.io/master:NoSchedule]
+[bootstrap-token] Using token: 8tpo9l.jlw135r8559kaad4
+[bootstrap-token] Configuring bootstrap tokens, cluster-info ConfigMap, RBAC Roles
+[bootstraptoken] configured RBAC rules to allow Node Bootstrap tokens to post CSRs in order for nodes to get long term certificate credentials
+[bootstraptoken] configured RBAC rules to allow the csrapprover controller automatically approve CSRs from a Node Bootstrap Token
+[bootstraptoken] configured RBAC rules to allow certificate rotation for all node client certificates in the cluster
+[bootstraptoken] creating the &quot;cluster-info&quot; ConfigMap in the &quot;kube-public&quot; namespace
+[addons] Applied essential addon: CoreDNS
+[addons] Applied essential addon: kube-proxy
+
+Your Kubernetes master has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run &quot;kubectl apply -f [podnetwork].yaml&quot; with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+You can now join any number of machines by running the following on each node
+as root:
+
+  kubeadm join 192.168.0.127:6443 --token 8tpo9l.jlw135r8559kaad4 --discovery-token-ca-cert-hash sha256:d6594ccc1310a45cbebc45f1c93f5ac113873786365ed63efcf667c952d7d197
+</code></pre></div><ul><li>给 master 机子设置配置</li></ul> <div class="language- extra-class"><pre class="language-text"><code>mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+export KUBECONFIG=$HOME/.kube/config
+</code></pre></div><ul><li>在 master 上查看一些环境</li></ul> <div class="language- extra-class"><pre class="language-text"><code>kubeadm token list
+
+kubectl cluster-info
+</code></pre></div><ul><li>给 master 安装 Flannel</li></ul> <div class="language- extra-class"><pre class="language-text"><code>cd /opt &amp;&amp; wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+kubectl apply -f /opt/kube-flannel.yml
+</code></pre></div><ul><li>到 node 节点加入集群：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>echo 1 &gt; /proc/sys/net/bridge/bridge-nf-call-iptables
+
+kubeadm join 192.168.0.127:6443 --token 8tpo9l.jlw135r8559kaad4 --discovery-token-ca-cert-hash sha256:d6594ccc1310a45cbebc45f1c93f5ac113873786365ed63efcf667c952d7d197
+
+这时候终端会输出：
+
+[preflight] Running pre-flight checks
+[discovery] Trying to connect to API Server &quot;192.168.0.127:6443&quot;
+[discovery] Created cluster-info discovery client, requesting info from &quot;https://192.168.0.127:6443&quot;
+[discovery] Requesting info from &quot;https://192.168.0.127:6443&quot; again to validate TLS against the pinned public key
+[discovery] Cluster info signature and contents are valid and TLS certificate validates against pinned roots, will use API Server &quot;192.168.0.127:6443&quot;
+[discovery] Successfully established connection with API Server &quot;192.168.0.127:6443&quot;
+[join] Reading configuration from the cluster...
+[join] FYI: You can look at this config file with 'kubectl -n kube-system get cm kubeadm-config -oyaml'
+[kubelet] Downloading configuration for the kubelet from the &quot;kubelet-config-1.13&quot; ConfigMap in the kube-system namespace
+[kubelet-start] Writing kubelet configuration to file &quot;/var/lib/kubelet/config.yaml&quot;
+[kubelet-start] Writing kubelet environment file with flags to file &quot;/var/lib/kubelet/kubeadm-flags.env&quot;
+[kubelet-start] Activating the kubelet service
+[tlsbootstrap] Waiting for the kubelet to perform the TLS Bootstrap...
+[patchnode] Uploading the CRI Socket information &quot;/var/run/dockershim.sock&quot; to the Node API object &quot;k8s-node-1&quot; as an annotation
+
+This node has joined the cluster:
+* Certificate signing request was sent to apiserver and a response was received.
+* The Kubelet was informed of the new secure connection details.
+
+Run 'kubectl get nodes' on the master to see this node join the cluster.
+</code></pre></div><ul><li>如果 node 节点加入失败，可以：<code>kubeadm reset</code>，再来重新 join</li> <li>在 master 节点上：<code>kubectl get cs</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>NAME                 STATUS    MESSAGE              ERROR
+controller-manager   Healthy   ok
+scheduler            Healthy   ok
+etcd-0               Healthy   {&quot;health&quot;: &quot;true&quot;} 
+结果都是 Healthy 则表示可以了，不然就得检查。必要时可以用：`kubeadm reset` 重置，重新进行集群初始化
+</code></pre></div><ul><li>在 master 节点上：<code>kubectl get nodes</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>如果还是 NotReady，则查看错误信息：kubectl get pods --all-namespaces
+其中：Pending/ContainerCreating/ImagePullBackOff 都是 Pod 没有就绪，我们可以这样查看对应 Pod 遇到了什么问题
+kubectl describe pod &lt;Pod Name&gt; --namespace=kube-system
+或者：kubectl logs &lt;Pod Name&gt; -n kube-system
+tail -f /var/log/messages
+</code></pre></div><h4 id="主要概念"><a href="#主要概念" class="header-anchor">#</a> 主要概念</h4> <ul><li><p>Master 节点，负责集群的调度、集群的管理</p> <ul><li>常见组件：<a href="https://kubernetes.io/docs/concepts/overview/components/" target="_blank" rel="noopener noreferrer">https://kubernetes.io/docs/concepts/overview/components/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>kube-apiserver：API服务</li> <li>kube-scheduler：调度</li> <li>Kube-Controller-Manager：容器编排</li> <li>Etcd：保存了整个集群的状态</li> <li>Kube-proxy：负责为 Service 提供 cluster 内部的服务发现和负载均衡</li> <li>Kube-DNS：负责为整个集群提供 DNS 服务</li></ul></li> <li><p>node 节点，负责容器相关的处理</p></li> <li><p><code>Pods</code></p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>创建，调度以及管理的最小单元
+共存的一组容器的集合
+容器共享PID，网络，IPC以及UTS命名空间
+容器共享存储卷
+短暂存在
+</code></pre></div><ul><li><code>Volumes</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>数据持久化
+Pod中容器共享数据
+生命周期
+支持多种类型的数据卷 – emptyDir, hostpath, gcePersistentDisk, awsElasticBlockStore, nfs, iscsi, glusterfs, secrets
+</code></pre></div><ul><li><code>Labels</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>用以标示对象（如Pod）的key/value对
+组织并选择对象子集
+</code></pre></div><ul><li><code>Replication Controllers</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>确保在任一时刻运行指定数目的Pod
+容器重新调度
+规模调整
+在线升级
+多发布版本跟踪
+</code></pre></div><ul><li><code>Services</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>抽象一系列Pod并定义其访问规则
+固定IP地址和DNS域名
+通过环境变量和DNS发现服务
+负载均衡
+外部服务 – ClusterIP, NodePort, LoadBalancer
+</code></pre></div><h4 id="主要组成模块"><a href="#主要组成模块" class="header-anchor">#</a> 主要组成模块</h4> <ul><li><code>etcd</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>高可用的Key/Value存储
+只有apiserver有读写权限
+使用etcd集群确保数据可靠性
+</code></pre></div><ul><li><code>apiserver</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Kubernetes系统入口， REST
+认证
+授权
+访问控制
+服务帐号
+资源限制
+</code></pre></div><ul><li><code>kube-scheduler</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>资源需求
+服务需求
+硬件/软件/策略限制
+关联性和非关联性
+数据本地化
+</code></pre></div><ul><li><code>kube-controller-manager</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Replication controller
+Endpoint controller
+Namespace controller
+Serviceaccount controller
+</code></pre></div><ul><li><code>kubelet</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>节点管理器
+确保调度到本节点的Pod的运行和健康
+</code></pre></div><ul><li><code>kube-proxy</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>Pod网络代理
+TCP/UDP请求转发
+负载均衡（Round Robin）
+</code></pre></div><ul><li><code>服务发现</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>环境变量
+DNS – kube2sky， etcd，skydns
+</code></pre></div><ul><li><code>网络</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>容器间互相通信
+节点和容器间互相通信
+每个Pod使用一个全局唯一的IP
+</code></pre></div><ul><li><code>高可用</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>kubelet保证每一个master节点的服务正常运行
+系统监控程序确保kubelet正常运行
+Etcd集群
+多个apiserver进行负载均衡
+Master选举确保kube-scheduler和kube-controller-manager高可用
+</code></pre></div><h2 id="资料"><a href="#资料" class="header-anchor">#</a> 资料</h2> <ul><li><a href="https://juejin.im/entry/5a03f98d6fb9a04524054516" target="_blank" rel="noopener noreferrer">如何更“优雅”地部署Kubernetes集群<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href=""></a></li> <li><a href=""></a></li> <li><a href=""></a></li> <li><a href=""></a></li> <li><a href=""></a></li> <li><a href=""></a></li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/adminlove520/Linux_All_in_one/edit/main/docs/docker/K8S-Install-And-Usage.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3 hours ago</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/Linux_All_in_one/assets/js/app.4a61619a.js" defer></script><script src="/Linux_All_in_one/assets/js/2.ee3c5eb7.js" defer></script><script src="/Linux_All_in_one/assets/js/1.bc260717.js" defer></script><script src="/Linux_All_in_one/assets/js/36.da0b8594.js" defer></script><script src="/Linux_All_in_one/assets/js/21.f8578145.js" defer></script>
+  </body>
+</html>

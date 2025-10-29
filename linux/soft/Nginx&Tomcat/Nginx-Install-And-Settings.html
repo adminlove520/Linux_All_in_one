@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Nginx 安装和配置 | Linux_All_in_one</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <link rel="icon" href="/Linux_All_in_one/favicon.ico">
+    <meta name="description" content="Linux 运维、软件运维、Docker 教程、网络安全">
+    
+    <link rel="preload" href="/Linux_All_in_one/assets/css/0.styles.407428ab.css" as="style"><link rel="preload" href="/Linux_All_in_one/assets/js/app.4a61619a.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/2.ee3c5eb7.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/1.bc260717.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/28.f1611369.js" as="script"><link rel="preload" href="/Linux_All_in_one/assets/js/21.f8578145.js" as="script"><link rel="prefetch" href="/Linux_All_in_one/assets/js/100.5e0212b4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/101.280ba6c4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/102.fcbe69ef.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/103.59b3bf86.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/104.628bb6be.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/105.f6a0a62b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/106.53648c35.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/107.093c4fab.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/108.f8895b2f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/109.878b5e6d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/110.e7dbd5ce.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/12.4bdd7f50.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/13.4850c8c8.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/14.66e24ed5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/15.41d57e79.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/16.96600c16.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/17.1cd68a21.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/18.f54ebd77.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/19.36d25975.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/20.0120ca8c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/22.9efa850b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/23.d7f5441c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/24.1cabd94c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/25.2cb5712a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/26.440ab754.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/27.94e60af2.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/29.730dead3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/3.accc0318.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/30.f69c3378.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/31.be2478fc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/32.9465ce70.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/33.f4c85e8a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/34.c3a0ece1.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/35.a75dd538.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/36.da0b8594.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/37.c49eb234.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/38.16f7d0e5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/39.ba6e47f0.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/4.9736648b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/40.664ddb58.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/41.4189f6ca.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/42.6472b832.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/43.c8d06688.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/44.e39a047e.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/45.39945860.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/46.ccbd9cdc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/47.9bed3a75.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/48.05ecd397.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/49.4f2f2874.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/5.9a4eb5c9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/50.d01632db.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/51.ad40e5f5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/52.bfacfa08.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/53.9398692c.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/54.b34cb199.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/55.6735c148.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/56.575312d7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/57.d54f0ac7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/58.f3cc4cf5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/59.881dba8f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/6.a3475002.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/60.859faf8a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/61.4efca474.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/62.578a9742.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/63.95e6ff4f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/64.054ab297.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/65.5be33d9b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/66.2312529e.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/67.81dd084d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/68.a11966f3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/69.ffbf7d57.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/7.b4d90be9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/70.51883659.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/71.9ff55cae.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/72.d54e184f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/73.5062fbf7.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/74.0721cccd.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/75.42dd3581.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/76.d590fa57.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/77.0e5953f3.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/78.4bb79720.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/79.48030292.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/80.d036bc22.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/81.d6524746.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/82.93460687.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/83.7c6f2e4a.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/84.83b1808d.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/85.14c12ffc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/86.893b5c41.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/87.7d10879f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/88.ef12068f.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/89.cc81e4e4.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/90.130454fc.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/91.838da398.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/92.22813cd9.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/93.2000427b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/94.062717c8.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/95.9cc81974.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/96.0457546b.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/97.71d6bbd5.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/98.e6299973.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/99.b198a395.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~docsearch.00f0a528.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~flowchart.d07b8b19.js"><link rel="prefetch" href="/Linux_All_in_one/assets/js/vendors~notification.877bb3fc.js">
+    <link rel="stylesheet" href="/Linux_All_in_one/assets/css/0.styles.407428ab.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/Linux_All_in_one/" class="home-link router-link-active"><img src="/Linux_All_in_one/images/dunwu-logo-100.png" alt="Linux_All_in_one" class="logo"> <span class="site-name can-hide">Linux_All_in_one</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/Linux_All_in_one/linux/cli/" class="nav-link">
+  💻 Linux 命令
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/ops/" class="nav-link">
+  ⚙️ Linux 运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/soft/" class="nav-link router-link-active">
+  📦 Linux 软件运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/docker/" class="nav-link">
+  🐳 Docker 教程
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/Cybersecurity/" class="nav-link">
+  🔒 Linux与网络安全
+</a></div> <a href="https://github.com/adminlove520/Linux_All_in_one" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/Linux_All_in_one/linux/cli/" class="nav-link">
+  💻 Linux 命令
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/ops/" class="nav-link">
+  ⚙️ Linux 运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/linux/soft/" class="nav-link router-link-active">
+  📦 Linux 软件运维
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/docker/" class="nav-link">
+  🐳 Docker 教程
+</a></div><div class="nav-item"><a href="/Linux_All_in_one/Cybersecurity/" class="nav-link">
+  🔒 Linux与网络安全
+</a></div> <a href="https://github.com/adminlove520/Linux_All_in_one" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Nginx 安装和配置</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-说明" class="sidebar-link">Nginx 说明</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#来自网络上的一个好介绍" class="sidebar-link">来自网络上的一个好介绍</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-的-docker-部署" class="sidebar-link">Nginx 的 Docker 部署</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#yum-安装-版本一般滞后半年左右" class="sidebar-link">YUM 安装（版本一般滞后半年左右）</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-源码编译安装-带-prometheus-模块" class="sidebar-link">Nginx 源码编译安装（带 Prometheus 模块）</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-源码编译安装-带监控模块" class="sidebar-link">Nginx 源码编译安装（带监控模块）</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#把-nginx-添加到系统服务中" class="sidebar-link">把 Nginx 添加到系统服务中</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-无缝升级" class="sidebar-link">Nginx 无缝升级</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#为-nginx-添加-basic-auth" class="sidebar-link">为 Nginx 添加 basic_auth</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-全局变量" class="sidebar-link">Nginx 全局变量</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-配置" class="sidebar-link">Nginx 配置</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-在-1-8-1-版本下的默认配置-去掉注释" class="sidebar-link">Nginx 在 1.8.1 版本下的默认配置（去掉注释）</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#http-服务-虚拟主机" class="sidebar-link">HTTP 服务，虚拟主机</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#反向代理和负载均衡" class="sidebar-link">反向代理和负载均衡</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#配置-https-服务-ssl-证书配置" class="sidebar-link">配置 HTTPS 服务（SSL 证书配置）</a></li></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-压力测试" class="sidebar-link">Nginx 压力测试</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-常规优化" class="sidebar-link">Nginx 常规优化</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-监控模块" class="sidebar-link">Nginx 监控模块</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-配置文件常用配置积累" class="sidebar-link">Nginx 配置文件常用配置积累</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#location-配置" class="sidebar-link">location 配置</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#链接-aa-下-查询参数包含-bb" class="sidebar-link">链接 aa 下，查询参数包含 bb</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#http-服务-绑定多个域名" class="sidebar-link">HTTP 服务，绑定多个域名</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#安装第三方模块" class="sidebar-link">安装第三方模块</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#生成规格图" class="sidebar-link">生成规格图</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#启用-gzip-压缩" class="sidebar-link">启用 Gzip 压缩</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#防盗链" class="sidebar-link">防盗链</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-禁止特定用户代理-user-agents-访问-静止指定-ip-访问" class="sidebar-link">Nginx 禁止特定用户代理（User Agents）访问，静止指定 IP 访问</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-缓存" class="sidebar-link">Nginx 缓存</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-自动分割日志文件" class="sidebar-link">Nginx 自动分割日志文件</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#nginx-处理跨域请求" class="sidebar-link">Nginx 处理跨域请求</a></li><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#安全相预防" class="sidebar-link">安全相预防</a></li></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#使用-logrotate-做-nginx-日志轮询分割" class="sidebar-link">使用 logrotate 做 nginx 日志轮询分割</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#杂七杂八" class="sidebar-link">杂七杂八</a></li></ul></li><li><a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.html#资料" class="sidebar-link">资料</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nginx-安装和配置"><a href="#nginx-安装和配置" class="header-anchor">#</a> Nginx 安装和配置</h1> <h2 id="nginx-说明"><a href="#nginx-说明" class="header-anchor">#</a> Nginx 说明</h2> <ul><li>Nginx 是一个很强大的高性能 Web 和反向代理服务器，常被我们用作负载均衡服务器，也可以作为邮件代理服务器</li> <li>Nginx WIKI：<a href="https://zh.wikipedia.org/zh/Nginx" target="_blank" rel="noopener noreferrer">https://zh.wikipedia.org/zh/Nginx<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Nginx 百科：<a href="http://baike.baidu.com/item/nginx" target="_blank" rel="noopener noreferrer">http://baike.baidu.com/item/nginx<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Nginx 官网：<a href="http://nginx.org/en/" target="_blank" rel="noopener noreferrer">http://nginx.org/en/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>Nginx 官网下载：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">http://nginx.org/en/download.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> <ul><li>源码包方式下载：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener noreferrer">http://nginx.org/en/download.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，注意该页面的：<code>Stable version</code>，这个表示稳定版本，2016-03-22 最新版本是：<code>nginx-1.8.1</code>，这是一个  <strong>tar.gz</strong> 的文件链接。</li> <li>构建包方式下载：<a href="http://nginx.org/en/linux_packages.html#stable" target="_blank" rel="noopener noreferrer">http://nginx.org/en/linux_packages.html#stable<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li>Nginx 文档：
+<ul><li>优先：<a href="https://www.nginx.com/resources/wiki/" target="_blank" rel="noopener noreferrer">https://www.nginx.com/resources/wiki/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>次要：<a href="http://nginx.org/en/docs/" target="_blank" rel="noopener noreferrer">http://nginx.org/en/docs/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li>Nginx 模块地址：<a href="https://www.nginx.com/resources/wiki/modules/" target="_blank" rel="noopener noreferrer">https://www.nginx.com/resources/wiki/modules/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="来自网络上的一个好介绍"><a href="#来自网络上的一个好介绍" class="header-anchor">#</a> 来自网络上的一个好介绍</h2> <ul><li>来源：<a href="https://help.aliyun.com/knowledge_detail/6703521.html?spm=5176.788314854.2.2.CdMGlB" target="_blank" rel="noopener noreferrer">https://help.aliyun.com/knowledge_detail/6703521.html?spm=5176.788314854.2.2.CdMGlB<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <blockquote><ul><li>传统上基于进程或线程模型架构的 Web 服务通过每进程或每线程处理并发连接请求，这势必会在网络和 I/O 操作时产生阻塞，其另一个必然结果则是对内存或 CPU 的利用率低下。生成一个新的进程/线程需要事先备好其运行时环境，这包括为其分配堆内存和栈内存，以及为其创建新的执行上下文等。这些操作都需要占用 CPU，而且过多的进程/线程还会带来线程抖动或频繁的上下文切换，系统性能也会由此进一步下降。</li> <li>在设计的最初阶段，Nginx 的主要着眼点就是其高性能以及对物理计算资源的高密度利用，因此其采用了不同的架构模型。受启发于多种操作系统设计中基于“事件”的高级处理机制，nginx采用了模块化、事件驱动、异步、单线程及非阻塞的架构，并大量采用了多路复用及事件通知机制。在 Nginx 中，连接请求由为数不多的几个仅包含一个线程的进程 Worker 以高效的回环(run-loop)机制进行处理，而每个 Worker 可以并行处理数千个的并发连接及请求。</li> <li>如果负载以 CPU 密集型应用为主，如 SSL 或压缩应用，则 Worker 数应与 CPU 数相同；如果负载以 IO 密集型为主，如响应大量内容给客户端，则 Worker 数应该为 CPU 个数的 1.5 或 2 倍。</li> <li>Nginx会按需同时运行多个进程：一个主进程(Master)和几个工作进程(Worker)，配置了缓存时还会有缓存加载器进程(Cache Loader)和缓存管理器进程(Cache Manager)等。所有进程均是仅含有一个线程，并主要通过“共享内存”的机制实现进程间通信。主进程以root用户身份运行，而 Worker、Cache Loader 和 Cache manager 均应以非特权用户身份运行。</li> <li>主进程主要完成如下工作：
+- 1.读取并验正配置信息；
+- 2.创建、绑定及关闭套接字；
+- 3.启动、终止及维护worker进程的个数；
+- 4.无须中止服务而重新配置工作特性；
+- 5.控制非中断式程序升级，启用新的二进制程序并在需要时回滚至老版本；
+- 6.重新打开日志文件，实现日志滚动；
+- 7.编译嵌入式perl脚本；</li> <li>Worker 进程主要完成的任务包括：
+- 1.接收、传入并处理来自客户端的连接；
+- 2.提供反向代理及过滤功能；
+- 3.nginx任何能完成的其它任务；</li> <li>Cache Loader 进程主要完成的任务包括：
+- 1.检查缓存存储中的缓存对象；
+- 2.使用缓存元数据建立内存数据库；</li> <li>Cache Manager 进程的主要任务：
+- 1.缓存的失效及过期检验；</li></ul></blockquote> <h2 id="nginx-的-docker-部署"><a href="#nginx-的-docker-部署" class="header-anchor">#</a> Nginx 的 Docker 部署</h2> <ul><li>预设好目录，在宿主机上创建下面目录：<code>mkdir -p /data/docker/nginx/logs /data/docker/nginx/conf</code></li> <li><strong>重点</strong>：先准备好你的 nginx.conf 文件，存放在宿主机的：<code>vim /data/docker/nginx/conf/nginx.conf</code> 目录下，等下需要映射。</li></ul> <div class="language- extra-class"><pre class="language-text"><code>worker_processes      1;
+
+events {
+  worker_connections  1024;
+}
+
+http {
+  include             mime.types;
+  default_type        application/octet-stream;
+
+  sendfile on;
+
+  keepalive_timeout   65;
+
+  server {
+    listen            80;
+    server_name       localhost 127.0.0.1 193.112.221.203 youmeek.com;
+
+    location / {
+      root            /usr/share/nginx/html;
+      index           index.html index.htm;
+    }
+  }
+}
+</code></pre></div><ul><li>官网镜像：<a href="https://hub.docker.com/_/nginx/" target="_blank" rel="noopener noreferrer">https://hub.docker.com/_/nginx/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>下载镜像：<code>docker pull nginx:1.12.2</code></li> <li>运行容器：<code>docker run --name youmeek-nginx -p 80:80 -v /data/docker/nginx/logs:/var/log/nginx -v /data/docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx:1.12.2</code></li> <li>重新加载配置（目前测试无效，只能重启服务）：<code>docker exec -it youmeek-nginx nginx -s reload</code></li> <li>停止服务：<code>docker exec -it youmeek-nginx nginx -s stop</code> 或者：<code>docker stop youmeek-nginx</code></li> <li>重新启动服务：<code>docker restart youmeek-nginx</code></li></ul> <hr> <h2 id="yum-安装-版本一般滞后半年左右"><a href="#yum-安装-版本一般滞后半年左右" class="header-anchor">#</a> YUM 安装（版本一般滞后半年左右）</h2> <ul><li>安装：<code>yum install -y nginx</code>，同时增加了一个 nginx 用户组和用户</li> <li>默认配置文件位置：<code>vim /etc/nginx/nginx.conf</code></li> <li>其他配置文件位置：<code>cd /etc/nginx/conf.d/</code></li> <li>模块配置文件位置：<code>cd /usr/share/nginx/modules/</code></li> <li>默认 HTML 静态文件位置：<code>cd /usr/share/nginx/html</code></li> <li>log 存放目录：<code>cd /var/log/nginx/</code></li> <li>状态：<code>systemctl status nginx</code></li> <li>启动：<code>systemctl start nginx</code></li> <li>启动：<code>systemctl stop nginx</code></li> <li>刷新配置：<code>nginx -s reload</code></li> <li>查看版本和 YUM 自带的模块：<code>nginx -V</code></li></ul> <hr> <h2 id="nginx-源码编译安装-带-prometheus-模块"><a href="#nginx-源码编译安装-带-prometheus-模块" class="header-anchor">#</a> Nginx 源码编译安装（带 Prometheus 模块）</h2> <div class="language- extra-class"><pre class="language-text"><code>./configure \
+--prefix=/usr/local/nginx \
+--pid-path=/var/local/nginx/nginx.pid \
+--lock-path=/var/lock/nginx/nginx.lock \
+--error-log-path=/var/log/nginx/error.log \
+--http-log-path=/var/log/nginx/access.log \
+--with-http_gzip_static_module \
+--http-client-body-temp-path=/var/temp/nginx/client \
+--http-proxy-temp-path=/var/temp/nginx/proxy \
+--http-fastcgi-temp-path=/var/temp/nginx/fastcgi \
+--http-uwsgi-temp-path=/var/temp/nginx/uwsgi \
+--with-http_ssl_module \
+--with-http_stub_status_module \
+--http-scgi-temp-path=/var/temp/nginx/scgi \
+--add-module=/usr/local/nginx-module-vts
+</code></pre></div><h2 id="nginx-源码编译安装-带监控模块"><a href="#nginx-源码编译安装-带监控模块" class="header-anchor">#</a> Nginx 源码编译安装（带监控模块）</h2> <ul><li>官网下载最新稳定版本 <strong>1.8.1</strong>，大小：814K</li> <li>官网安装说明：<a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/install/" target="_blank" rel="noopener noreferrer">https://www.nginx.com/resources/wiki/start/topics/tutorials/install/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>源码编译配置参数说明：
+<ul><li><a href="https://www.nginx.com/resources/wiki/start/topics/tutorials/installoptions/" target="_blank" rel="noopener noreferrer">https://www.nginx.com/resources/wiki/start/topics/tutorials/installoptions/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://nginx.org/en/docs/configure.html" target="_blank" rel="noopener noreferrer">http://nginx.org/en/docs/configure.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></li> <li>开始安装：
+<ul><li>安装依赖包：<code>yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel</code></li> <li>预设几个文件夹，方便等下安装的时候有些文件可以进行存放：
+<ul><li><code>mkdir -p /usr/local/nginx /var/log/nginx /var/temp/nginx /var/lock/nginx</code></li></ul></li> <li>下载源码包：<code>wget http://nginx.org/download/nginx-1.8.1.tar.gz</code></li> <li>解压：<code>tar zxvf nginx-1.8.1.tar.gz</code></li> <li>进入解压后目录：<code>cd nginx-1.8.1/</code></li> <li>编译配置：</li></ul></li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code>./configure \
+<span class="token key attr-name">--prefix</span><span class="token punctuation">=</span><span class="token value attr-value">/usr/local/nginx \</span>
+<span class="token key attr-name">--pid-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/local/nginx/nginx.pid \</span>
+<span class="token key attr-name">--lock-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/lock/nginx/nginx.lock \</span>
+<span class="token key attr-name">--error-log-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/log/nginx/error.log \</span>
+<span class="token key attr-name">--http-log-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/log/nginx/access.log \</span>
+--with-http_gzip_static_module \
+<span class="token key attr-name">--http-client-body-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/client \</span>
+<span class="token key attr-name">--http-proxy-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/proxy \</span>
+<span class="token key attr-name">--http-fastcgi-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/fastcgi \</span>
+<span class="token key attr-name">--http-uwsgi-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/uwsgi \</span>
+--with-http_ssl_module \
+--with-http_stub_status_module \
+<span class="token key attr-name">--http-scgi-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/scgi</span>
+</code></pre></div><ul><li>编译：<code>make</code></li> <li>安装：<code>make install</code></li> <li>启动 Nginx
+<ul><li>先检查是否在 /usr/local 目录下生成了 Nginx 等相关文件：<code>cd /usr/local/nginx;ll</code>，正常的效果应该是显示这样的：</li></ul></li></ul> <div class="language-nginx extra-class"><pre class="language-nginx"><code>drwxr-xr-x. 2 root root 4096 3月  22 16:21 conf
+drwxr-xr-x. 2 root root 4096 3月  22 16:21 html
+drwxr-xr-x. 2 root root 4096 3月  22 16:21 sbin
+</code></pre></div><ul><li>如果要检查刚刚编译的哪些模块，可以：<code>nginx -V</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>nginx version: nginx/1.8.0
+built by gcc 4.4.7 20120313 (Red Hat 4.4.7-18) (GCC)
+built with OpenSSL 1.0.1e-fips 11 Feb 2013
+TLS SNI support enabled
+configure arguments: --user=nginx --group=nginx --prefix=/usr/local/nginx --pid-path=/usr/local/nginx/run/nginx.pid --lock-path=/usr/local/nginx/lock/nginx.lock --with-http_ssl_module --with-http_dav_module --with-http_flv_module --with-http_gzip_static_module --with-http_stub_status_module
+</code></pre></div><ul><li>停止防火墙：<code>service iptables stop</code> <ul><li>或是把 80 端口加入到的排除列表：</li> <li><code>sudo iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT</code></li> <li><code>sudo service iptables save</code></li> <li><code>sudo service iptables restart</code></li></ul></li> <li>启动：<code>/usr/local/nginx/sbin/nginx</code>，启动完成 shell 是不会有输出的</li> <li>检查 时候有 Nginx 进程：<code>ps aux | grep nginx</code>，正常是显示 3 个结果出来</li> <li>检查 Nginx 是否启动并监听了 80 端口：<code>netstat -ntulp | grep 80</code></li> <li>访问：<code>192.168.1.114</code>，如果能看到：<code>Welcome to nginx!</code>，即可表示安装成功</li> <li>检查 Nginx 启用的配置文件是哪个：<code>/usr/local/nginx/sbin/nginx -t</code></li> <li>刷新 Nginx 配置后重启：<code>/usr/local/nginx/sbin/nginx -s reload</code></li> <li>停止 Nginx：<code>/usr/local/nginx/sbin/nginx -s stop</code></li> <li>如果访问不了，或是出现其他信息看下错误立即：<code>vim /var/log/nginx/error.log</code></li></ul> <h2 id="把-nginx-添加到系统服务中"><a href="#把-nginx-添加到系统服务中" class="header-anchor">#</a> 把 Nginx 添加到系统服务中</h2> <ul><li>新建文件：<code>vim /etc/init.d/nginx</code></li> <li>添加如下内容：</li></ul> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token comment">#!/bin/bash</span>
+
+
+<span class="token comment">#nginx执行程序路径需要修改</span>
+<span class="token directive"><span class="token keyword">nginxd=/usr/local/nginx/sbin/nginx</span>
+
+<span class="token comment"># nginx配置文件路径需要修改</span>
+nginx_config=/usr/local/nginx/conf/nginx.conf
+
+<span class="token comment"># pid 地址需要修改</span>
+nginx_pid=/var/local/nginx/nginx.pid
+
+
+RETVAL=0
+prog=<span class="token string">&quot;nginx&quot;</span>
+
+<span class="token comment"># Source function library.</span>
+. /etc/rc.d/init.d/functions
+<span class="token comment"># Source networking configuration.</span>
+. /etc/sysconfig/network
+<span class="token comment"># Check that networking is up.</span>
+[ $</span><span class="token punctuation">{</span>NETWORKING<span class="token punctuation">}</span> = &quot;no&quot; ] &amp;&amp; <span class="token directive"><span class="token keyword">exit</span> <span class="token number">0</span>
+[ -x <span class="token variable">$nginxd</span> ] || exit <span class="token number">0</span>
+
+<span class="token comment"># Start nginx daemons functions.</span>
+start()</span> <span class="token punctuation">{</span>
+<span class="token directive"><span class="token keyword">if</span> [ -e <span class="token variable">$nginx_pid</span> ]</span><span class="token punctuation">;</span>then
+   <span class="token directive"><span class="token keyword">echo</span> <span class="token string">&quot;nginx already running....&quot;</span>
+   exit <span class="token number">1</span>
+fi
+
+echo -n $<span class="token string">&quot;Starting <span class="token variable">$prog</span>: &quot;</span>
+daemon <span class="token variable">$nginxd</span> -c $</span><span class="token punctuation">{</span>nginx_config<span class="token punctuation">}</span>
+RETVAL=$?
+echo
+[ $RETVAL = 0 ] &amp;&amp; touch /var/lock/subsys/nginx
+return $RETVAL
+<span class="token punctuation">}</span>
+
+<span class="token comment"># Stop nginx daemons functions.</span>
+<span class="token comment"># pid 地址需要修改</span>
+<span class="token directive"><span class="token keyword">stop()</span></span> <span class="token punctuation">{</span>
+	echo -n $&quot;Stopping $prog: &quot;
+	killproc $nginxd
+	RETVAL=$?
+	echo
+	[ $RETVAL = 0 ] &amp;&amp; rm -f /var/lock/subsys/nginx /var/local/nginx/nginx.pid
+<span class="token punctuation">}</span>
+
+<span class="token comment"># reload nginx service functions.</span>
+<span class="token directive"><span class="token keyword">reload()</span></span> <span class="token punctuation">{</span>
+	echo -n $&quot;Reloading $prog: &quot;
+	<span class="token comment">#kill -HUP `cat ${nginx_pid}`</span>
+	killproc $nginxd -HUP
+	RETVAL=$?
+	echo
+<span class="token punctuation">}</span>
+
+<span class="token comment"># See how we were called.</span>
+<span class="token directive"><span class="token keyword">case</span> <span class="token string">&quot;<span class="token variable">$1</span>&quot;</span> in
+	start)
+		start</span>
+		<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	<span class="token directive"><span class="token keyword">stop)</span>
+		stop</span>
+		<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	<span class="token directive"><span class="token keyword">reload)</span>
+		reload</span>
+		<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	<span class="token directive"><span class="token keyword">restart)</span>
+		stop
+		start</span>
+		<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	<span class="token directive"><span class="token keyword">status)</span>
+		status <span class="token variable">$prog</span>
+		RETVAL=$?</span>
+		<span class="token punctuation">;</span><span class="token punctuation">;</span>
+	*)
+
+	echo $&quot;Usage: $prog <span class="token punctuation">{</span>start|stop|restart|reload|status|help<span class="token punctuation">}</span>&quot;
+	exit 1
+
+esac
+exit $RETVAL
+</code></pre></div><ul><li>修改权限：<code>chmod 755 /etc/init.d/nginx</code></li> <li>启动服务：<code>service nginx start</code></li> <li>停止服务：<code>service nginx stop</code></li> <li>重启服务：<code>service nginx restart</code></li></ul> <h2 id="nginx-无缝升级"><a href="#nginx-无缝升级" class="header-anchor">#</a> Nginx 无缝升级</h2> <ul><li>使用新的参数<code>configure</code>后执行<code>make</code>重新编译,注意之后不要执行<code>make install</code>.新构建的Nginx会在<code>objs</code>目录下</li> <li>备份旧的Nginx <code>cp 老的nginx目录/sbin/nginx 老的nginx目录/sbin/nginx.old</code></li> <li>复制新的Nginx <code>cp ./objs/nginx 老的nginx目录/sbin/</code>,可能提示Nginx被占用,如果是则强制覆盖即可.</li> <li>检查下Makefile的更新指令 <code>cat Makefile</code>,检查下路径是否匹配,一般没什么问题毕竟是根据你的参数生成的文件.</li></ul> <div class="language-bash extra-class"><pre class="language-bash"><code>upgrade:
+	/usr/local/nginx/sbin/nginx <span class="token parameter variable">-t</span>
+
+	<span class="token function">kill</span> <span class="token parameter variable">-USR2</span> <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> /var/local/nginx/nginx.pid<span class="token variable">`</span></span>
+	<span class="token function">sleep</span> <span class="token number">1</span>
+	<span class="token builtin class-name">test</span> <span class="token parameter variable">-f</span> /var/local/nginx/nginx.pid.oldbin
+
+	<span class="token function">kill</span> <span class="token parameter variable">-QUIT</span> <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> /var/local/nginx/nginx.pid.oldbin<span class="token variable">`</span></span>
+</code></pre></div><ul><li>更新 <code>make upgrade</code></li></ul> <h2 id="为-nginx-添加-basic-auth"><a href="#为-nginx-添加-basic-auth" class="header-anchor">#</a> 为 Nginx 添加 basic_auth</h2> <div class="language- extra-class"><pre class="language-text"><code>yum install httpd-tools  
+
+htpasswd -c /opt/nginx-auth/passwd.db myusername，回车之后输入两次密码
+
+
+server {
+    ...
+
+    location / {
+        auth_basic   &quot;please input you user name and password&quot;;
+        auth_basic_user_file    /opt/nginx-auth/passwd.db;
+        ....
+    }
+}
+
+</code></pre></div><h2 id="nginx-全局变量"><a href="#nginx-全局变量" class="header-anchor">#</a> Nginx 全局变量</h2> <ul><li>$arg_PARAMETER #这个变量包含GET请求中，如果有变量PARAMETER时的值。</li> <li>$args #这个变量等于请求行中(GET请求)的参数，例如foo=123&amp;bar=blahblah;</li> <li>$binary_remote_addr #二进制的客户地址。</li> <li>$body_bytes_sent #响应时送出的body字节数数量。即使连接中断，这个数据也是精确的。</li> <li>$content_length #请求头中的Content-length字段。</li> <li>$content_type #请求头中的Content-Type字段。</li> <li>$cookie_COOKIE #cookie COOKIE变量的值</li> <li>$document_root #当前请求在root指令中指定的值。</li> <li>$document_uri #与$uri相同。</li> <li>$host #请求主机头字段，否则为服务器名称。</li> <li>$hostname #Set to the machine’s hostname as returned by gethostname</li> <li>$http_HEADER</li> <li>$is_args #如果有$args参数，这个变量等于”?”，否则等于”&quot;，空值。</li> <li>$http_user_agent #客户端agent信息</li> <li>$http_cookie #客户端cookie信息</li> <li>$limit_rate #这个变量可以限制连接速率。</li> <li>$query_string #与$args相同。</li> <li>$request_body_file #客户端请求主体信息的临时文件名。</li> <li>$request_method #客户端请求的动作，通常为GET或POST。</li> <li>$remote_addr #客户端的IP地址。</li> <li>$remote_port #客户端的端口。</li> <li>$remote_user #已经经过Auth Basic Module验证的用户名。</li> <li>$request_completion #如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)。</li> <li>$request_method #GET或POST</li> <li>$request_filename #当前请求的文件路径，由root或alias指令与URI请求生成。</li> <li>$request_uri #包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。</li> <li>$scheme #HTTP方法（如http，https）。</li> <li>$server_protocol #请求使用的协议，通常是HTTP/1.0或HTTP/1.1。</li> <li>$server_addr #服务器地址，在完成一次系统调用后可以确定这个值。</li> <li>$server_name #服务器名称。</li> <li>$server_port #请求到达服务器的端口号。</li> <li>$uri #不带请求参数的当前URI，$uri不包含主机名，如”/foo/bar.html”。该值有可能和$request_uri 不一致。</li> <li>$request_uri是浏览器发过来的值。该值是rewrite后的值。例如做了internal redirects后。</li></ul> <h2 id="nginx-配置"><a href="#nginx-配置" class="header-anchor">#</a> Nginx 配置</h2> <ul><li>Nginx 默认配置文件：<code>vim /usr/local/nginx/conf/nginx.conf</code></li></ul> <h3 id="nginx-在-1-8-1-版本下的默认配置-去掉注释"><a href="#nginx-在-1-8-1-版本下的默认配置-去掉注释" class="header-anchor">#</a> Nginx 在 1.8.1 版本下的默认配置（去掉注释）</h3> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">user</span> root</span><span class="token punctuation">;</span><span class="token comment">#我这里习惯使用 root，所以这里需要这样设置。如果你有为你的 nginx 专门配置一个用户，这里需要改为你的用户</span>
+<span class="token directive"><span class="token keyword">worker_processes</span>  <span class="token number">1</span></span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span>  <span class="token number">1024</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">include</span>       mime.types</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">default_type</span>  application/octet-stream</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">sendfile</span>        <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span></span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token directive"><span class="token keyword">error_page</span>   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  /50x.html</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> = /50x.html</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="http-服务-虚拟主机"><a href="#http-服务-虚拟主机" class="header-anchor">#</a> HTTP 服务，虚拟主机</h3> <ul><li>停止防火墙：<code>service iptables stop</code>，防止出现特别干扰</li> <li>编辑默认的配置文件：<code>vim /usr/local/nginx/conf/nginx.conf</code></li> <li>设置两个虚拟主机（通过<strong>端口</strong>来区分开）</li></ul> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">user</span> root</span><span class="token punctuation">;</span><span class="token comment">#我这里习惯使用 root，所以这里需要这样设置。如果你有为你的 nginx 专门配置一个用户，这里需要改为你的用户</span>
+<span class="token directive"><span class="token keyword">worker_processes</span>  <span class="token number">1</span></span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span>  <span class="token number">1024</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">include</span>       mime.types</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">default_type</span>  application/octet-stream</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">sendfile</span>        <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span></span><span class="token punctuation">;</span>
+
+    <span class="token comment"># 一个 server 代表一个虚拟主机</span>
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token comment"># 虚拟机根目录是 /usr/local/nginx/html 目录</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+            <span class="token comment"># 虚拟机首页是 /usr/local/nginx/html 目录下这两个文件</span>
+            <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token directive"><span class="token keyword">error_page</span>   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  /50x.html</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> = /50x.html</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token comment"># 第二个虚拟机的端口是 90，服务地址还是本地</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">90</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  localhost</span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html90</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token directive"><span class="token keyword">error_page</span>   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  /50x.html</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> = /50x.html</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>设置两个虚拟主机（通过<strong>域名</strong>来区分开）</li></ul> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">user</span> root</span><span class="token punctuation">;</span><span class="token comment">#我这里习惯使用 root，所以这里需要这样设置。如果你有为你的 nginx 专门配置一个用户，这里需要改为你的用户</span>
+<span class="token directive"><span class="token keyword">worker_processes</span>  <span class="token number">1</span></span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span>  <span class="token number">1024</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">include</span>       mime.types</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">default_type</span>  application/octet-stream</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">sendfile</span>        <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span></span><span class="token punctuation">;</span>
+
+    <span class="token comment"># 一个 server 代表一个虚拟主机</span>
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+        <span class="token comment"># 两个虚拟主机都使用 80 端口，设置不同域名</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  code.youmeek.com</span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token comment"># 虚拟机根目录是 /usr/local/nginx/html 目录</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+            <span class="token comment"># 虚拟机首页是 /usr/local/nginx/html 目录下这两个文件</span>
+            <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token directive"><span class="token keyword">error_page</span>   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  /50x.html</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> = /50x.html</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+        <span class="token comment"># 两个虚拟主机都使用 80 端口，设置不同域名</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  i.youmeek.com</span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html-i</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token directive"><span class="token keyword">error_page</span>   <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span>  /50x.html</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">location</span> = /50x.html</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">root</span>   html</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="反向代理和负载均衡"><a href="#反向代理和负载均衡" class="header-anchor">#</a> 反向代理和负载均衡</h3> <ul><li><p>最精简的环境：一台虚拟机</p> <ul><li>1 个 JDK</li> <li>1 个 Nginx</li> <li>2 个 Tomcat</li></ul></li> <li><p>Nginx 配置：</p></li></ul> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">user</span> root</span><span class="token punctuation">;</span><span class="token comment">#我这里习惯使用 root，所以这里需要这样设置。如果你有为你的 nginx 专门配置一个用户，这里需要改为你的用户</span>
+<span class="token directive"><span class="token keyword">worker_processes</span>  <span class="token number">1</span></span><span class="token punctuation">;</span>
+
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">worker_connections</span>  <span class="token number">1024</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">include</span>       mime.types</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">default_type</span>  application/octet-stream</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">sendfile</span>        <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">keepalive_timeout</span>  <span class="token number">65</span></span><span class="token punctuation">;</span>
+
+    <span class="token comment"># 自己定义的两个 tomcat 请求地址和端口</span>
+    <span class="token comment"># 也就是当浏览器请求：tomcat.youmeek.com 的时候从下面这两个 tomcat 中去找一个进行转发</span>
+    <span class="token directive"><span class="token keyword">upstream</span> tomcatCluster</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.1.114:8080</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server</span> 192.168.1.114:8081</span><span class="token punctuation">;</span>
+        
+        <span class="token comment"># 添加 weight 字段可以表示权重，值越高权重越大，默认值是 1，最大值官网没说，一般如果设置也就设置 3,5,7 这样的数</span>
+        <span class="token comment"># 官网：https://www.nginx.com/resources/admin-guide/load-balancer/#weight</span>
+        <span class="token comment"># server 192.168.1.114:8080 weight=2;</span>
+        <span class="token comment"># server 192.168.1.114:8081 weight=1;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">listen</span>       <span class="token number">80</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">server_name</span>  tomcat.youmeek.com</span><span class="token punctuation">;</span>
+
+        <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+            <span class="token directive"><span class="token keyword">proxy_pass</span>   http://tomcatCluster</span><span class="token punctuation">;</span>
+            <span class="token directive"><span class="token keyword">index</span>  index.html index.htm</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="配置-https-服务-ssl-证书配置"><a href="#配置-https-服务-ssl-证书配置" class="header-anchor">#</a> 配置 HTTPS 服务（SSL 证书配置）</h3> <ul><li>免费申请 SSL 证书渠道
+<ul><li>教程：<a href="https://www.wn789.com/4394.html" target="_blank" rel="noopener noreferrer">https://www.wn789.com/4394.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>SSL For Free：<a href="https://www.sslforfree.com" target="_blank" rel="noopener noreferrer">https://www.sslforfree.com<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>配置要点其实就是下面该图：</li></ul></li> <li><img src="/Linux_All_in_one/assets/img/Nginx-SSL-a-1.4e60f7c8.jpg" alt="免费申请 SSL 证书渠道"></li> <li>一般你会下载下面两个文件：<code>certificate.crt</code>，<code>private.key</code></li> <li>如果你需要把 crt 和 key 的证书转换成 keystore（如果你有这个需求的话）</li> <li>从 key 和 crt 生成 pkcs12 格式的 keystore，生成过程会让人你输入密码，这个密码下面会用到，我这里假设输入 123456
+<ul><li><code>openssl pkcs12 -export -in certificate.crt -inkey private.key -out youmeek.p12 -name youmeek -CAfile certificate.crt -caname -chain</code></li> <li><code>keytool -importkeystore -v -srckeystore youmeek.p12 -srcstoretype pkcs12 -srcstorepass 123456 -destkeystore youmeek.keystore -deststoretype jks -deststorepass 123456</code></li></ul></li> <li>修改 nginx 配置文件，增加对 HTTPS 支持（下面的配置是基于默认安装 nginx 后的配置）</li> <li><code>vim /usr/local/nginx/conf/nginx.conf</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>worker_processes  1;
+events {
+    worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    
+    # 如果访问 http 也直接跳转到 https
+    server {
+        listen       80;
+        server_name sso.youmeek.com;
+        return 301 https://$server_name$request_uri;
+    }
+    
+    # crt 和 key 文件的存放位置根据你自己存放位置进行修改
+    server {
+        listen       443;
+        server_name  sso.youmeek.com;
+        ssl  on;
+        ssl_certificate     /opt/ssl/certificate.crt;
+        ssl_certificate_key /opt/ssl/private.key;
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+    }
+}
+
+</code></pre></div><ul><li>最新版本的 Nginx SSL 配置</li></ul> <div class="language- extra-class"><pre class="language-text"><code>listen 443 ssl;
+
+ssl_certificate     /opt/jar/ssl/server.crt;
+ssl_certificate_key /opt/jar/ssl/server.key;
+
+ssl_session_timeout 5m;
+ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:HIGH:!aNULL:!MD5:!RC4:!DHE;
+ssl_prefer_server_ciphers on;
+</code></pre></div><hr> <h2 id="nginx-压力测试"><a href="#nginx-压力测试" class="header-anchor">#</a> Nginx 压力测试</h2> <ul><li>AB 测试工具安装：<code>yum install -y httpd-tools</code></li> <li>使用：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>ab -n 1000 -c 100 http://www.baidu.com/
+
+-n  总的请求数
+-c  单个时刻并发数
+</code></pre></div><ul><li>压测结果：</li></ul> <div class="language- extra-class"><pre class="language-text"><code>This is ApacheBench, Version 2.3 &lt;$Revision: 1430300 $&gt;
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking juejin.im (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Completed 600 requests
+Completed 700 requests
+Completed 800 requests
+Completed 900 requests
+Completed 1000 requests
+Finished 1000 requests
+
+
+Server Software:        nginx
+Server Hostname:        juejin.im
+Server Port:            443
+SSL/TLS Protocol:       TLSv1.2,ECDHE-RSA-AES256-GCM-SHA384,2048,256
+
+Document Path:          /
+Document Length:        271405 bytes
+
+Concurrency Level:      100（并发数：100）
+Time taken for tests:   120.042 seconds（一共用了 120 秒）
+Complete requests:      1000（总的请求数：1000）
+Failed requests:        0（失败的请求次数）
+Write errors:           0
+Total transferred:      271948000 bytes
+HTML transferred:       271405000 bytes
+Requests per second:    8.33 [#/sec] (mean)（QPS 系统吞吐量，平均每秒请求数，计算公式 = 总请求数 / 总时间数）
+Time per request:       12004.215 [ms] (mean)（毫秒，平均每次并发 100 个请求的处理时间）
+Time per request:       120.042 [ms] (mean, across all concurrent requests)（毫秒，并发 100 下，平均每个请求处理时间）
+Transfer rate:          2212.34 [Kbytes/sec] received（平均每秒网络流量）
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       57  159 253.6     77    1002
+Processing:  1139 11570 2348.2  11199   36198
+Waiting:      156 1398 959.4   1279   22698
+Total:       1232 11730 2374.1  11300   36274
+
+Percentage of the requests served within a certain time (ms)
+  50%  11300
+  66%  11562
+  75%  11863
+  80%  12159
+  90%  13148
+  95%  15814
+  98%  18882
+  99%  22255
+ 100%  36274 (longest request)
+</code></pre></div><hr> <h2 id="nginx-常规优化"><a href="#nginx-常规优化" class="header-anchor">#</a> Nginx 常规优化</h2> <h4 id="增加工作线程数和并发连接数"><a href="#增加工作线程数和并发连接数" class="header-anchor">#</a> 增加工作线程数和并发连接数</h4> <ul><li>修改参数：<code>worker_processes 1;</code></li> <li>该参数是指：nginx 要开启的工作进程数（worker process），默认是 1，一把你不需要修改。（除了工作进程，还有一种 master process 的概念）</li> <li>但是如果请求数比较多，一般推荐最大是修改成 CPU 的内核数等同的值，以增加能力。</li> <li>修改 events 参数</li></ul> <div class="language- extra-class"><pre class="language-text"><code>events {
+	# 每一个进程可以打开的最大连接数（这个参数是受限制于系统参数的，默认是 1024）（进程数是上面 worker_processes 决定的）
+    worker_connections  1024;
+    # 可以一次建立多个连接
+    multi_accept on;
+    # epoll 模式效率最高
+    use epoll;
+}
+</code></pre></div><h4 id="启动长连接"><a href="#启动长连接" class="header-anchor">#</a> 启动长连接</h4> <div class="language- extra-class"><pre class="language-text"><code>http {
+  sendfile on; # 减少文件在应用和内核之间的拷贝
+  tcp_nopush on; # 当数据包达到一定大小再发送
+  
+  keepalive_timeout   65;
+  
+  upstream tomcatCluster {
+      server 192.168.1.114:8080;
+      server 192.168.1.114:8081;
+      keepalive 300; # 300 个长连接
+  }
+  
+}
+</code></pre></div><h4 id="启用缓存和压缩"><a href="#启用缓存和压缩" class="header-anchor">#</a> 启用缓存和压缩</h4> <div class="language- extra-class"><pre class="language-text"><code>http {
+    gzip on;
+    gzip_buffers 8 16k; # 这个限制了nginx不能压缩大于128k的文件
+    gzip_min_length 512; # 单位byte
+    gzip_disable &quot;MSIE [1-6]\.(?!.*SV1)&quot;;
+    gzip_http_version 1.1; # 1.0 的版本可能会有问题
+    gzip_types   text/plain text/css application/javascript application/x-javascript application/json application/xml;
+}
+</code></pre></div><h4 id="操作系统优化-机器好点的时候"><a href="#操作系统优化-机器好点的时候" class="header-anchor">#</a> 操作系统优化（机器好点的时候）</h4> <h6 id="修改-sysctl-参数"><a href="#修改-sysctl-参数" class="header-anchor">#</a> 修改 sysctl 参数</h6> <ul><li>修改配置文件：<code>vim /etc/sysctl.conf</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>net.ipv4.tcp_fin_timeout = 10           #保持在FIN-WAIT-2状态的时间，使系统可以处理更多的连接。此参数值为整数，单位为秒。
+net.ipv4.tcp_tw_reuse = 1              #开启重用，允许将TIME_WAIT socket用于新的TCP连接。默认为0，表示关闭。
+net.ipv4.tcp_tw_recycle = 0            #开启TCP连接中TIME_WAIT socket的快速回收。默认值为0，表示关闭。
+net.ipv4.tcp_syncookies = 1            #开启SYN cookie，出现SYN等待队列溢出时启用cookie处理，防范少量的SYN攻击。默认为0，表示关闭。
+net.core.somaxconn = 1024             #定义了系统中每一个端口最大的监听队列的长度, 对于一个经常处理新连接的高负载 web服务环境来说，默认值为128，偏小。
+</code></pre></div><ul><li>刷新 sysctl 配置：<code>sysctl -p</code></li></ul> <h6 id="修改-limits-参数"><a href="#修改-limits-参数" class="header-anchor">#</a> 修改 limits 参数</h6> <ul><li>ElasticSearch 一般也是要修改该参数</li> <li>修改配置文件：<code>vim /etc/security/limits.conf</code></li></ul> <div class="language- extra-class"><pre class="language-text"><code>* soft nofile 262144
+* hard nofile 262144
+* soft core unlimited
+* soft stack 262144
+</code></pre></div><hr> <h2 id="nginx-监控模块"><a href="#nginx-监控模块" class="header-anchor">#</a> Nginx 监控模块</h2> <ul><li>如果你需要监控 nginx 情况可以安装的加入这个模块 http_stub_status_module：</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code>./configure \
+<span class="token key attr-name">--prefix</span><span class="token punctuation">=</span><span class="token value attr-value">/usr/local/nginx \</span>
+<span class="token key attr-name">--pid-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/local/nginx/nginx.pid \</span>
+<span class="token key attr-name">--lock-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/lock/nginx/nginx.lock \</span>
+<span class="token key attr-name">--error-log-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/log/nginx/error.log \</span>
+<span class="token key attr-name">--http-log-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/log/nginx/access.log \</span>
+--with-http_gzip_static_module \
+<span class="token key attr-name">--http-client-body-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/client \</span>
+<span class="token key attr-name">--http-proxy-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/proxy \</span>
+<span class="token key attr-name">--http-fastcgi-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/fastcgi \</span>
+<span class="token key attr-name">--http-uwsgi-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/uwsgi \</span>
+--with-http_ssl_module \
+<span class="token key attr-name">--http-scgi-temp-path</span><span class="token punctuation">=</span><span class="token value attr-value">/var/temp/nginx/scgi \</span>
+--with-http_stub_status_module
+</code></pre></div><ul><li>然后在 nginx.conf 文件的 location 区域增加：stub_status on;</li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code>location /nginx_status {
+    allow 127.0.0.1;
+    deny all;
+    stub_status on;
+    access_log   off;
+}
+</code></pre></div><ul><li>当你访问：http://127.0.0.1/nginx_status，会得到类似下面的结果</li> <li>其中配置的 <code>allow 127.0.0.1;</code> 表示只允许本机访问：http://127.0.0.1/nginx_status 才能看到
+<ul><li>所以我们也可以通过 curl 访问本机看到结果，不一定要对外开放。</li></ul></li> <li><code>deny all;</code> 除了被允许的，其他所有人都不可以访问</li></ul> <div class="language- extra-class"><pre class="language-text"><code>Active connections: 1
+server accepts handled requests
+ 3 6 9   
+Reading: 0 Writing: 5 Waiting: 0   
+</code></pre></div><ul><li>Active connections: 当前活动连接数，包含 waiting 的连接（最常需要看的就是这个参数）</li> <li>Server accepts handled requests: Nginx总共处理了 3 个连接,成功创建 6 次握手(证明中间没有失败的),总共处理了 9 个请求.</li> <li>Reading: Nginx 读取到客户端的 Header 信息数，如果很大，说明现在很多请求正在过来</li> <li>Writing: Nginx 返回给客户端的 Header 信息数，如果很大，说明现在又很多请求正在响应</li> <li>Waiting: 开启keep-alive的情况下,这个值等于 active – (reading + writing),意思就是 Nginx 已经处理完成,正在等候下一次请求指令的驻留连接.</li> <li>所以,在访问效率高,请求很快被处理完毕的情况下,Waiting数比较多是正常的。<strong>如果reading + writing数较多,则说明并发访问量非常大,正在处理过程中</strong></li></ul> <h2 id="nginx-配置文件常用配置积累"><a href="#nginx-配置文件常用配置积累" class="header-anchor">#</a> Nginx 配置文件常用配置积累</h2> <h3 id="location-配置"><a href="#location-配置" class="header-anchor">#</a> location 配置</h3> <div class="language-nginx extra-class"><pre class="language-nginx"><code>= 开头表示精确匹配
+^~ 开头表示uri以某个常规字符串开头，不是正则匹配
+~ 开头表示区分大小写的正则匹配<span class="token punctuation">;</span>
+~* 开头表示不区分大小写的正则匹配
+/ 通用匹配, 如果没有其它匹配,任何请求都会匹配到
+
+<span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> /user</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> = /user</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> /user/</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> ^~ /user/</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> /user/youmeek</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> ~ /user/youmeek</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> ~ ^(/cas/|/casclient1/|/casclient2/|/casclient3/)</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> ~ .*\.(gif|jpg|jpeg|png|bmp|swf|ico|woff|woff2|ttf|eot|txt)$</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token directive"><span class="token keyword">location</span> ~ .*$</span> <span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="链接-aa-下-查询参数包含-bb"><a href="#链接-aa-下-查询参数包含-bb" class="header-anchor">#</a> 链接 aa 下，查询参数包含 bb</h3> <ul><li>这里必须使用：IF，但是 IF 是不被推荐的：<a href="https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/" target="_blank" rel="noopener noreferrer">If Is Evil<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <div class="language- extra-class"><pre class="language-text"><code>location /aa/ {
+	if ( $args ~* '(.*bb.*)' ) {
+		return 601;
+	}
+}
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>location /aa/ {
+	if ($args ~ tag=bb){
+		return 601;
+	}
+}
+</code></pre></div><hr> <h3 id="http-服务-绑定多个域名"><a href="#http-服务-绑定多个域名" class="header-anchor">#</a> HTTP 服务，绑定多个域名</h3> <ul><li><a href="https://www.ttlsa.com/nginx/use-nginx-proxy/" target="_blank" rel="noopener noreferrer">https://www.ttlsa.com/nginx/use-nginx-proxy/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="安装第三方模块"><a href="#安装第三方模块" class="header-anchor">#</a> 安装第三方模块</h3> <h3 id="生成规格图"><a href="#生成规格图" class="header-anchor">#</a> 生成规格图</h3> <h3 id="启用-gzip-压缩"><a href="#启用-gzip-压缩" class="header-anchor">#</a> 启用 Gzip 压缩</h3> <h3 id="防盗链"><a href="#防盗链" class="header-anchor">#</a> 防盗链</h3> <ul><li><a href="https://help.aliyun.com/knowledge_detail/5974693.html?spm=5176.788314853.2.18.s4z1ra" target="_blank" rel="noopener noreferrer">https://help.aliyun.com/knowledge_detail/5974693.html?spm=5176.788314853.2.18.s4z1ra<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h3 id="nginx-禁止特定用户代理-user-agents-访问-静止指定-ip-访问"><a href="#nginx-禁止特定用户代理-user-agents-访问-静止指定-ip-访问" class="header-anchor">#</a> Nginx 禁止特定用户代理（User Agents）访问，静止指定 IP 访问</h3> <ul><li><a href="https://www.ttlsa.com/nginx/how-to-block-user-agents-using-nginx/" target="_blank" rel="noopener noreferrer">https://www.ttlsa.com/nginx/how-to-block-user-agents-using-nginx/<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://help.aliyun.com/knowledge_detail/5974693.html?spm=5176.788314853.2.18.s4z1ra" target="_blank" rel="noopener noreferrer">https://help.aliyun.com/knowledge_detail/5974693.html?spm=5176.788314853.2.18.s4z1ra<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li>&lt;&gt;</li> <li>&lt;&gt;</li> <li>&lt;&gt;</li></ul> <h3 id="nginx-缓存"><a href="#nginx-缓存" class="header-anchor">#</a> Nginx 缓存</h3> <h3 id="nginx-自动分割日志文件"><a href="#nginx-自动分割日志文件" class="header-anchor">#</a> Nginx 自动分割日志文件</h3> <ul><li>在 <a href="/Linux_All_in_one/linux/soft/Nginx&amp;Tomcat/Tomcat-Install-And-Settings.html">Tomcat 安装和配置、优化</a> 文章已经使用了 cronolog，这里也借用 cronolog 来实现分割。具体安装看文章。</li> <li>创建目录：<code>mkdir -p /data/nginx/log/logs</code></li> <li>创建命名管道：<code>mkfifo /data/nginx/log/access_log.log</code></li> <li>配置 cronolog（按天）：<code>nohup cat /data/nginx/log/access_log.log | /usr/sbin/cronolog /data/nginx/log/logs/access-%Y-%m-%d.log &amp;</code></li> <li>配置 cronolog（按月）：<code>nohup cat /data/nginx/log/access_log.log | /usr/sbin/cronolog /data/nginx/log/logs/access-%Y-%m.log &amp;</code></li> <li>编辑 nginx 配置文件，配置 log 位置：<code>access_log /data/nginx/log/access_log.log;</code></li> <li>重启 nginx，最终可以在 /data/nginx/log/logs 目录下看到生成的 log</li></ul> <h3 id="nginx-处理跨域请求"><a href="#nginx-处理跨域请求" class="header-anchor">#</a> Nginx 处理跨域请求</h3> <h3 id="安全相预防"><a href="#安全相预防" class="header-anchor">#</a> 安全相预防</h3> <p>在配置文件中设置自定义缓存以限制缓冲区溢出攻击的可能性
+client_body_buffer_size 1K;
+client_header_buffer_size 1k;
+client_max_body_size 1k;
+large_client_header_buffers 2 1k;</p> <ol start="7"><li><p>将timeout设低来防止DOS攻击
+所有这些声明都可以放到主配置文件中。
+client_body_timeout 10;
+client_header_timeout 10;
+keepalive_timeout 5 5;
+send_timeout 10;</p></li> <li><p>限制用户连接数来预防DOS攻击
+limit_zone slimits $binary_remote_addr 5m;
+limit_conn slimits 5;</p></li></ol> <h2 id="使用-logrotate-做-nginx-日志轮询分割"><a href="#使用-logrotate-做-nginx-日志轮询分割" class="header-anchor">#</a> 使用 logrotate 做 nginx 日志轮询分割</h2> <ul><li><p>前提：</p> <ul><li>我 nginx 的成功日志路径：/var/log/nginx/access.log</li> <li>我 nginx 的错误日志路径：/var/log/nginx/error.log</li> <li>pid 路径：/var/local/nginx/nginx.pid</li></ul></li> <li><p>一般情况 CentOS 是装有：logrotate，你可以检查下：<code>rpm -ql logrotate</code>，如果有相应结果，则表示你也装了。</p></li> <li><p>logrotate 配置文件一般在：</p> <ul><li>全局配置：/etc/logrotate.conf 通用配置文件，可以定义全局默认使用的选项。</li> <li>自定义配置，放在这个目录下的都算是：/etc/logrotate.d/</li></ul></li> <li><p>针对 nginx 创建自定义的配置文件：<code>vim /etc/logrotate.d/nginx</code></p></li> <li><p>文件内容如下：</p></li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code>
+/var/log/nginx/access.log /var/log/nginx/error.log {
+	create 644 root root
+	notifempty
+	daily
+	rotate 15
+	missingok
+	dateext
+	sharedscripts
+	postrotate
+	    if [ -f /var/local/nginx/nginx.pid ]; then
+	        kill -USR1 `cat /var/local/nginx/nginx.pid`
+	    fi
+	endscript
+}
+
+</code></pre></div><ul><li><p>/var/log/nginx/access.log /var/log/nginx/error.log：多个文件用空格隔开，也可以用匹配符：/var/log/nginx/*.log</p></li> <li><p>notifempty：如果是空文件的话，不转储</p></li> <li><p>create 644 root root：create mode owner group 转储文件，使用指定的文件模式创建新的日志文件</p></li> <li><p>调用频率，有：daily，weekly，monthly可选</p></li> <li><p>rotate 15：一次将存储15个归档日志。对于第16个归档，时间最久的归档将被删除。</p></li> <li><p>sharedscripts：所有的日志文件都轮转完毕后统一执行一次脚本</p></li> <li><p>missingok：如果日志文件丢失，不报错继续执行下一个</p></li> <li><p>dateext：文件后缀是日期格式,也就是切割后文件是:xxx.log-20131216.gz 这样,如果注释掉,切割出来是按数字递增,即前面说的 xxx.log-1 这种格式</p></li> <li><p>postrotate：执行命令的开始标志</p></li> <li><p>endscripthttp:执行命令的结束标志</p></li> <li><p>if 判断的意思不是中止Nginx的进程，而是传递给它信号重新生成日志，如果nginx没启动不做操作</p></li> <li><p>更多参数可以看：<a href="http://www.cnblogs.com/zengkefu/p/5498324.html" target="_blank" rel="noopener noreferrer">http://www.cnblogs.com/zengkefu/p/5498324.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p>手动执行测试：<code>/usr/sbin/logrotate -vf /etc/logrotate.d/nginx</code></p></li> <li><p>参数：‘-f’选项来强制logrotate轮循日志文件，‘-v’参数提供了详细的输出。</p></li> <li><p>验证是否手动执行成功，查看 cron 的日志即可：<code>grep logrotate /var/log/cron</code></p></li> <li><p>设置 crontab 定时任务：<code>vim /etc/crontab</code>，添加下面内容：</p></li></ul> <div class="language-ini extra-class"><pre class="language-ini"><code>//每天02点10分执行一次
+10 02 * * *  /usr/sbin/logrotate -f /etc/logrotate.d/nginx
+</code></pre></div><h3 id="杂七杂八"><a href="#杂七杂八" class="header-anchor">#</a> 杂七杂八</h3> <ul><li><a href="https://www.ttlsa.com/nginx/nginx-modules-ngx_set_cconv/" target="_blank" rel="noopener noreferrer">nginx实现简体繁体字互转以及中文转拼音<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.ttlsa.com/nginx/nginx-modules-ngx_http_log_request_speed/" target="_blank" rel="noopener noreferrer">nginx记录分析网站响应慢的请求(ngx_http_log_request_speed)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://www.ttlsa.com/nginx/nginx-modules-empty_gif/" target="_blank" rel="noopener noreferrer">nginx空白图片(empty_gif模块)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <h2 id="资料"><a href="#资料" class="header-anchor">#</a> 资料</h2> <ul><li><a href="https://help.aliyun.com/knowledge_detail/5974693.html?spm=5176.788314853.2.18.s4z1ra" target="_blank" rel="noopener noreferrer">https://help.aliyun.com/knowledge_detail/5974693.html?spm=5176.788314853.2.18.s4z1ra<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://www.ydcss.com/archives/466" target="_blank" rel="noopener noreferrer">http://www.ydcss.com/archives/466<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://blog.sae.sina.com.cn/archives/2107" target="_blank" rel="noopener noreferrer">http://blog.sae.sina.com.cn/archives/2107<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://www.nginx.cn/273.html" target="_blank" rel="noopener noreferrer">http://www.nginx.cn/273.html<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="http://printfabcd.iteye.com/blog/1200382" target="_blank" rel="noopener noreferrer">http://printfabcd.iteye.com/blog/1200382<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/adminlove520/Linux_All_in_one/edit/main/docs/linux/soft/Nginx&amp;Tomcat/Nginx-Install-And-Settings.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">3 hours ago</span></div></footer> <!----> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/Linux_All_in_one/assets/js/app.4a61619a.js" defer></script><script src="/Linux_All_in_one/assets/js/2.ee3c5eb7.js" defer></script><script src="/Linux_All_in_one/assets/js/1.bc260717.js" defer></script><script src="/Linux_All_in_one/assets/js/28.f1611369.js" defer></script><script src="/Linux_All_in_one/assets/js/21.f8578145.js" defer></script>
+  </body>
+</html>
