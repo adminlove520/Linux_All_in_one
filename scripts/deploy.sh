@@ -25,7 +25,7 @@ cd "${ROOT_DIR}/docs"
 
 # 生成静态文件
 echo "开始安装依赖..."
-npm ci  # 使用ci代替install以获得更确定性的构建
+npm install  # 使用install安装依赖
 echo "开始构建项目..."
 npm run build
 
