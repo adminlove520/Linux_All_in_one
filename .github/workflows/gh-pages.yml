@@ -30,7 +30,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: 'npm'  # 让actions自动查找和缓存npm依赖，不指定特定路径
+          cache: 'npm'
+          # 指定工作目录为docs，这样就能在正确位置找到package.json
+          cache-dependency-path: 'docs/package.json'
 
       - name: Make deploy script executable
         run: chmod +x ./scripts/deploy.sh
