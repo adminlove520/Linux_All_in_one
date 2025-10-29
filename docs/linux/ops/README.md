@@ -11,6 +11,9 @@
 - [Vim](vim.md)
 - [Iptables](iptables.md)
 - [oh-my-zsh](zsh.md)
+- [监控](monitor.md)
+
+
 
 ## 🚪 传送门
 

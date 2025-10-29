@@ -6,8 +6,16 @@ module.exports = {
   dest: 'dist',
   base: '/Linux_All_in_one/',
   title: 'Linux_All_in_one',
-  description: '数据库教程',
-  head: [['link', { rel: 'icon', href: `/favicon.ico` }]],
+  description: 'Linux 运维、软件运维、Docker 教程、网络安全',
+  head: [
+    ['link', { rel: 'icon', href: `/favicon.ico` }],
+    ['style', {}, `
+      /* 使二级目录居中显示 */
+      .sidebar-nav li ul li {
+        text-align: center;
+      }
+    `]
+  ],
   markdown: {
     externalLinks: {
       target: '_blank',
@@ -30,24 +38,24 @@ module.exports = {
         lastUpdated: '上次更新',
         nav: [
           {
-            text: 'Linux 命令',
+            text: '💻 Linux 命令',
             link: '/linux/cli/',
           },
           {
-            text: 'Linux 运维',
+            text: '⚙️ Linux 运维',
             link: '/linux/ops/',
           },
           {
-            text: 'Linux 软件运维',
+            text: '📦 Linux 软件运维',
             link: '/linux/soft/',
           },
           {
-            text: 'Docker 教程',
+            text: '🐳 Docker 教程',
             link: '/docker/',
           },
           {
-            text: '🎯 Github',
-            link: 'https://github.com/adminlove520',
+            text: '🔒 Linux与网络安全',
+            link: '/Cybersecurity/',
             target: '_blank',
             rel: '',
           },

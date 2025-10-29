@@ -1,18 +1,25 @@
----
-home: true
-heroImage: https://raw.githubusercontent.com/dunwu/images/master/common/dunwu-logo.png
-heroText: Linux_All_in_one
-tagline: 📚 Linux_All_in_one 是一个 Linux 教程。
-actionLink: /
-footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
+<p align="center">
+  <a href="http://endless.horse">
+    <img src=moon.gif alt="spinning-moon" />
+  </a>
+</p>
+
+<h1 align="center">
+  Linux_All_in_one
+</h1>
+
+<h3 align="center">
+  📚 **Linux_All_in_one** 是一个 Linux 教程 ✨
+</h3>
+
 ---
 
 
-> 📚 **Linux_All_in_one** 是一个 Linux 教程。
+<!-- > 📚 **Linux_All_in_one** 是一个 Linux 教程。
 >
 > 🔁 项目维护 [github](https://github.com/adminlove520/Linux_All_in_one) 
 >
-> 📖 [电子书](https://adminlove520.github.io/Linux_All_in_one/)
+> 📖 [电子书](https://adminlove520.github.io/Linux_All_in_one/) -->
 
 ## 📖 内容
 
@@ -43,35 +50,53 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
 - [Vim](linux/ops/vim.md)
 - [Iptables](linux/ops/iptables.md)
 - [oh-my-zsh](linux/ops/zsh.md)
+- [监控](linux/ops/monitor.md)
+- [Glances 安装和配置](linux/ops/Glances-Install-And-Settings.md)
+
+
 
 ### 软件运维
 
 > 部署在 Linux 系统上的软件运维。
 >
-> 配套安装脚本：⌨ [软件运维配置脚本集合](https://github.com/dunwu/Linux_All_in_one/tree/master/codes/linux/soft)
+> 配套安装脚本：⌨ [软件运维配置脚本集合](https://github.com/adminlove520/Linux_All_in_one/tree/main/codes/linux/soft)
 
 - 开发环境
   - [JDK 安装](linux/soft/jdk-install.md)
   - [Maven 安装](linux/soft/maven-install.md)
   - [Nodejs 安装](linux/soft/nodejs-install.md)
+  - [Maven 安装和配置](linux/soft/Maven-Install-And-Settings.md)
+  - [Nodejs 安装和配置](linux/soft/Node-Install-And-Usage.md)
 - 开发工具
   - [Nexus 运维](linux/soft/nexus-ops.md)
   - [Gitlab 运维](linux/soft/gitlab-ops.md)
   - [Jenkins 运维](linux/soft/jenkins-ops.md)
   - [Svn 运维](linux/soft/svn-ops.md)
   - [YApi 运维](linux/soft/yapi-ops.md)
+  - [JMeter 安装和配置](linux/soft/JMeter-Install-And-Settings.md)
+
 - 中间件服务
   - [Elastic 运维](linux/soft/elastic)
   - [Kafka 运维](linux/soft/kafka-install.md)
   - [RocketMQ 运维](linux/soft/rocketmq-install.md)
-  - [Zookeeper 运维](https://github.com/dunwu/javatech/blob/master/docs/technology/monitor/zookeeper-ops.md)
+  - [Zookeeper 运维](linux/soft/zookeeper-ops.md)
   - [Nacos 运维](linux/soft/nacos-install.md)
 - 服务器
-  - [Nginx 教程](https://github.com/dunwu/nginx-tutorial) 📚
+  - [*Nginx 教程*](https://github.com/adminlove520/Linux_All_in_one/tree/main/codes/linux/soft/Nginx&Tomcat) 📚
+  - [Nginx 安装和配置](linux/soft/Nginx&Tomcat/Nginx-Install-And-Settings.md)
+  - [Nginx + Keepalived 高可用](linux/soft/Nginx&Tomcat/Nginx-Keepalived-Install-And-Settings.md)
   - [Tomcat 运维](linux/soft/tomcat-install.md)
-- [数据库](https://github.com/dunwu/db-tutorial) 📚
-  - [Mysql 运维](https://github.com/dunwu/db-tutorial/blob/master/docs/sql/mysql/mysql-ops.md)
-  - [Redis 运维](https://github.com/dunwu/db-tutorial/blob/master/docs/nosql/redis/redis-ops.md)
+- [*数据库*](https://github.com/adminlove520/Linux_All_in_one/tree/main/codes/linux/soft/database) 📚
+  - [Mysql 运维](linux/soft/mysql-ops.md)
+  - [Mysql 安装和配置](linux/soft/Databases/Mysql-Install-And-Settings.md)
+  - [Mysql 优化](linux/soft/Databases/mysql-optimize.md)
+  - [Mysql 测试](linux/soft/Databases/mysql-test.md)
+  - [Mysql 测试](linux/soft/Databases/Mysql-Tutorial.md)
+  - [Redis 运维](linux/soft/Databases/redis-ops.md)
+  - [Redis 安装和配置](linux/soft/Databases/Redis-Install-And-Settings.md)
+  - [MongoDB 安装和配置](linux/soft/Databases/MongoDB-Install-And-Settings.md)
+  - [MongoDB 运维](linux/soft/Databases/mongodb-ops.md)
+  - [PostgreSQL 安装和配置](linux/soft/Databases/PostgreSQL-Install-And-Settings.md)
 
 ### Docker
 
@@ -79,12 +104,29 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
 - [Dockerfile 最佳实践](docker/docker-dockerfile.md)
 - [Docker Cheat Sheet](docker/docker-cheat-sheet.md)
 - [Kubernetes 应用指南](docker/kubernetes.md)
+- [Kubernetes 安装和配置](docker/Kubernetes-Install-And-Usage.md)
+- [Kubernets(K8S)使用](docker/K8S-Install-And-Usage.md)
+## 网络安全
+> 网络安全相关知识与工具使用指南。
 
-### 其他
+- [黑客入侵检查](Cybersecurity/Was-Hacked.md) - 检测系统是否被入侵的方法
 
-- [一篇文章让你彻底掌握 Python](https://dunwu.github.io/blog/pages/ef501b/)
-- [一篇文章让你彻底掌握 Shell](https://dunwu.github.io/blog/pages/ea6ae1/)
-- [如何优雅的玩转 Git](https://dunwu.github.io/blog/pages/2fc8b1/)
+### Kali Linux
+> Kali Linux 是一款基于 Debian 的 Linux 发行版，专为数字鉴识和渗透测试设计。
+
+- [Kali Linux 目录](Cybersecurity/kali-linux-settings/kali-linux-toc.md) - Kali Linux 相关内容总览
+- [Kali Linux 系统安装](Cybersecurity/kali-linux-settings/kali-linux-install.md) - 系统安装教程
+- [Kali Linux 基础设置](Cybersecurity/kali-linux-settings/kali-linux-basic-settings.md) - 系统初始化配置
+- [Kali Linux 渗透测试思路](Cybersecurity/kali-linux-settings/kali-linux-penetration-test.md) - 渗透测试方法论
+- [Kali Linux 社会工程学](Cybersecurity/kali-linux-settings/kali-linux-social-engineering.md) - 社会工程学攻击技术
+- [Kali Linux SQL注入](Cybersecurity/kali-linux-settings/kali-linux-sql-injection.md) - SQL注入攻击方法
+
+
+## 优秀仓库推荐
+
+- [GNU/Linux 更换系统软件源脚本及 Docker 安装与换源脚本](https://github.com/SuperManito/LinuxMirrors.git)
+- [人话<->命令行](https://github.com/faithleysath/fuckit.sh.git)
+- [Linux 命令行手册](https://github.com/adminlove520/linux-command.git)
 
 ## ⌨ 脚本
 
@@ -101,7 +143,8 @@ footer: CC-BY-SA-4.0 Licensed | Copyright © 2025-Now anonymous
 源码：[**CentOS 常规操作运维脚本集合**](https://github.com/adminlove520/Linux_All_in_one/tree/main/codes/linux)
 
 ## 📚 资料
-
+- **Linux 介绍**
+  - [Linux 介绍](linux/Linux.md)  
 - **Linux 命令**
   - [命令行的艺术](https://github.com/jlevy/the-art-of-command-line/blob/master/README-zh.md)
   - [Linux 命令大全](https://man.linuxde.net/)
