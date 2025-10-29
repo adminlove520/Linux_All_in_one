@@ -45,7 +45,8 @@ git add .
 COMMIT_MSG="Deploy site - $(date +'%Y-%m-%d %H:%M:%S')"
 # 如果在GitHub Actions环境中，使用实际的提交消息
 if [ -n "${GITHUB_SHA}" ]; then
-    COMMIT_MSG="Deploy site - ${GITHUB_SHA::7}"
+    # 使用sh兼容的方式提取前7个字符
+    COMMIT_MSG="Deploy site - $(echo "${GITHUB_SHA}" | cut -c1-7)"
 fi
 git commit -m "${COMMIT_MSG}"
 
