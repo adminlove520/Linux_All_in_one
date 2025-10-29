@@ -36,10 +36,10 @@ cd dist
 # echo 'www.example.com' > CNAME
 
 echo "初始化git仓库..."
-git init
+# 在初始化时直接设置默认分支为gh-pages
+git init -b gh-pages
 git config user.name "GitHub Actions Bot"
 git config user.email "github-actions[bot]@users.noreply.github.com"
-git checkout -b gh-pages
 git add .
 # 使用更有意义的提交信息
 COMMIT_MSG="Deploy site - $(date +'%Y-%m-%d %H:%M:%S')"
