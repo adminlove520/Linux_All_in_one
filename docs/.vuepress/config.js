@@ -48,8 +48,6 @@ module.exports = {
           {
             text: '🔒 Linux与网络安全',
             link: '/Cybersecurity/',
-            target: '_blank',
-            rel: '',
           },
         ],
         sidebar: 'auto',
